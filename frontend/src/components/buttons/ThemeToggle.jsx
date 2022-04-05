@@ -1,26 +1,38 @@
 import {useState, useEffect} from 'react'
 
 function ThemeToggle() {
-    const [theme, setTheme] = useState('dark')
+    const THEME_KEY = "ct10.theme"
+    const savedChoice = JSON.parse(localStorage.getItem(THEME_KEY)) || []
+    const [theme, setTheme] = useState(savedChoice)
     
+    // Update state based on theme toggle
     const themeToggle = () => {
-        if(theme === 'dark'){
-            setTheme('light')
+        if(theme[0] === 'dark'){
+            setTheme(['light', 'checked'])
+            
         }else{
-            setTheme('dark')
+            setTheme(['dark', 'unchecked'])
         }
     }
 
+    // Set theme on first load and update every time the button is clicked
+    // Saved to local storage
     useEffect(() => {
         const themeAttribute = document.querySelector(".drawer")
-        themeAttribute.dataset.theme = theme
-    }, [theme])
+        const themeToggle = document.querySelector(".theme-toggle")
+        let themeChecked  = theme[1] === 'checked' ? true : false
+
+        themeToggle.checked = themeChecked
+        themeAttribute.dataset.theme = theme[0]
+
+        localStorage.setItem(THEME_KEY, JSON.stringify(theme));
+    }, [theme, themeToggle])
 
   return (
     <>
          <ul className="menu menu-horizontal">
           <li>
-            <label className="swap swap-rotate">
+            <label className="swap swap-rotate rounded-full">
             {/* <!-- this hidden checkbox controls the state --> */}
             <input className='theme-toggle' type="checkbox" onClick={themeToggle}/>
   
