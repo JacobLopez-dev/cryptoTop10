@@ -11,7 +11,9 @@ function SideMenu() {
         <li className='m-1'>
             <Link to="/articles" className='text-2xl'>Articles</Link>
         </li>
-        
+        <li className='m-1'>
+            <Link to="/news" className='text-2xl'>News</Link>
+        </li>
       </ul>
       
     </div>

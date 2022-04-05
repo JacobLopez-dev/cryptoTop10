@@ -3,6 +3,7 @@ import NavBar from "./components/layout/NavBar"
 import SideMenu from './components/layout/SideMenu';
 import Articles from './pages/Articles';
 import Home from "./pages/Home";
+import News from './pages/News';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/articles" element={<Articles/>}/>
+        <Route path="/news" element={<News/>}/>
       </Routes>
       </main>
       </div>

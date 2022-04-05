@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 
 function ThemeToggle() {
     const THEME_KEY = "ct10.theme"
-    const savedChoice = JSON.parse(localStorage.getItem(THEME_KEY)) || []
+    const savedChoice = JSON.parse(localStorage.getItem(THEME_KEY)) || ['dark', 'unchecked']
     const [theme, setTheme] = useState(savedChoice)
     
     // Update state based on theme toggle
