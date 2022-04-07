@@ -8,9 +8,11 @@ const app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
-app.get('/', (req, res) => {
+app.get('/', (req,res) => {
     res.status(201).json({message: 'Welcome'})
 })
+
+app.use('/api', require('./routes/cryptoRoute'))
 
 app.use(errorHandler)
 

@@ -1,13 +1,13 @@
-import axios from 'axios'
+// import axios from 'axios'
 
-const API_URL = '/api/tickets/'
+// const API_URL = '/api/tickets/'
 
-const createArticle = () => {
-    console.log('create article service')
-}
+// const createArticle = () => {
+//     console.log('create article service')
+// }
 
-const articleService = {
-    createArticle,
-}
+// const articleService = {
+//     createArticle,
+// }
 
-export default articleService
+// export default articleService

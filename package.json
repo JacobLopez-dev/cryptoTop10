@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/JacobLopez-dev/cryptoTop10#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^7.1.0",
     "daisyui": "^2.13.6",

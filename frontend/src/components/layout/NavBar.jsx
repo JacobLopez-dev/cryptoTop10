@@ -11,7 +11,7 @@ function Navbar() {
         </label>
       </div> 
       <div className="flex-1 px-2 mx-2">
-        <Link to='/' className="btn btn-ghost normal-case text-2xl text-primary px-2 mx-2">New app</Link>
+        <Link to='/' className="btn btn-ghost normal-case text-2xl text-primary px-2 mx-2">Crypto Top 10</Link>
       </div>
       <div className="">
         <ThemeToggle/>

@@ -8,7 +8,7 @@ function ThemeToggle() {
     // Update state based on theme toggle
     const themeToggle = () => {
         if(theme[0] === 'dark'){
-            setTheme(['light', 'checked'])
+            setTheme(['emerald', 'checked'])
             
         }else{
             setTheme(['dark', 'unchecked'])
@@ -24,9 +24,8 @@ function ThemeToggle() {
 
         themeToggle.checked = themeChecked
         themeAttribute.dataset.theme = theme[0]
-
         localStorage.setItem(THEME_KEY, JSON.stringify(theme));
-    }, [theme, themeToggle])
+    }, [theme])
 
   return (
     <>
