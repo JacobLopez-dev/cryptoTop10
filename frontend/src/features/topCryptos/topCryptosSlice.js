@@ -3,6 +3,7 @@ import crpytoService from "./topCryptosService"
 
 const initialState = {
     cryptos: [],
+    singleCrypto: {},
     isError: false,
     isSuccess: false,
     isLoading: false,
@@ -19,6 +20,18 @@ async(_, thunkApi) => {
         return (message)
     }
 })
+
+export const getSingleCrypto = createAsyncThunk('cryptos/getCrypto',
+async(_, thunkApi) => {
+    try{
+        // let response = await crpytoService.getTopCryptos()
+        // return response.data
+    }catch(error){
+        // const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+        // return (message)
+    }
+})
+
 
 const topCryptoSlice = createSlice({
     name: 'crypto',
@@ -37,6 +50,19 @@ const topCryptoSlice = createSlice({
             state.cryptos = action.payload
           })
           .addCase(getTopCryptos.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.message = action.payload
+          })
+          .addCase(getSingleCrypto.pending, (state) => {
+            state.isLoading = true
+          })
+          .addCase(getSingleCrypto.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.isSuccess = true
+            state.singleCrypto = action.payload
+          })
+          .addCase(getSingleCrypto.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload

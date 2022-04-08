@@ -5,7 +5,7 @@ function Home() {
   return (
    <>
     <CryptoTable/>
-    <div class="divider"></div>
+    <div className="divider"></div>
    </>
   )
 }

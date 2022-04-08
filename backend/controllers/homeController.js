@@ -28,8 +28,18 @@ const getTopTen = asyncHandler(async (req,res) => {
 
 // https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?slug=bitcoin
 
+const getSingleCrypto = asyncHandler(async(req,res) => {
+    const response = await coinmarketcap.get(`/info?&slug=${req.params.singleCrypto}`)
 
+    if(!response){
+        res.status(400)
+        throw new Error('Top 10 not retrieved')
+    }
+
+    res.status(201).json(response.data)
+})
 
 module.exports = {
     getTopTen,
+    getSingleCrypto
 }
