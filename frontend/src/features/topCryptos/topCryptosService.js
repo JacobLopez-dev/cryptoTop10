@@ -7,14 +7,15 @@ const getTopCryptos = async () =>{
     return response.data
 }
 
-const getSingleCrypto = async (crypto) =>{
+// Get single crypto meta data
+const getSingleCrypto = async (crypto) => {
     const response = await axios.get(API_URL + `/${crypto}`)
     return response.data
 }
 
-const crpytoService = {
+const cryptoService = {
     getTopCryptos,
     getSingleCrypto
 }
 
-export default crpytoService
+export default cryptoService

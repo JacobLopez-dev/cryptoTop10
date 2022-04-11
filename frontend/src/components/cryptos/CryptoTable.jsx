@@ -1,29 +1,15 @@
-import {useEffect} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import {getTopCryptos, reset} from '../../features/topCryptos/topCryptosSlice'
+import {useSelector} from 'react-redux'
 import CryptoTableItem from '../cryptos/CryptoTableItem'
+import Spinner from '../Spinner'
 
 function CryptoTable() {
 
-    const {cryptos, isLoading, isSuccess} = useSelector((state) => state.cryptos)
+    const {cryptos, isLoading} = useSelector((state) => state.cryptos)
 
-    const dispatch = useDispatch()
   
-    useEffect(() => {
-      return () => {
-          if(isSuccess) {
-              dispatch(reset())
-          }
-          console.log('from effect 2')
-      }
-      
-  }, [dispatch, isSuccess])
-  
-    useEffect(() => {
-       dispatch(getTopCryptos())
-       console.log('from effect 1')
-    }, [dispatch])
-  
+    if(isLoading){
+      return <Spinner/>
+    }
     
   return (
     <div className="overflow-x-auto mt-5">

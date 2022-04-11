@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
-import crpytoService from "./topCryptosService"
+import cryptoService from "./topCryptosService"
 
 const initialState = {
     cryptos: [],
@@ -10,10 +10,10 @@ const initialState = {
     message: ''
 }
 
-export const getTopCryptos = createAsyncThunk('cryptos/getCryptos',
+export const getTopCryptos = createAsyncThunk('cryptos/getTopCryptos',
 async(_, thunkApi) => {
     try{
-        let response = await crpytoService.getTopCryptos()
+        let response = await cryptoService.getTopCryptos()
         return response.data
     }catch(error){
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
@@ -21,14 +21,14 @@ async(_, thunkApi) => {
     }
 })
 
-export const getSingleCrypto = createAsyncThunk('cryptos/getCrypto',
-async(_, thunkApi) => {
+export const getSingleCrypto = createAsyncThunk('cryptos/getSingleCrypto',
+async(crypto, thunkApi) => {
     try{
-        // let response = await crpytoService.getTopCryptos()
-        // return response.data
+        let response = await cryptoService.getSingleCrypto(crypto)
+        return response.data
     }catch(error){
-        // const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-        // return (message)
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+        return (message)
     }
 })
 
