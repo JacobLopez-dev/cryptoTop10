@@ -4,7 +4,7 @@ import Spinner from '../Spinner'
 
 function CryptoTable() {
 
-    const {cryptos, isLoading} = useSelector((state) => state.cryptos)
+    const {isLoading} = useSelector((state) => state.cryptos)
 
   
     if(isLoading){
@@ -24,7 +24,7 @@ function CryptoTable() {
           </tr>
         </thead>
         <tbody>
-        <CryptoTableItem cryptos={cryptos}/>
+        <CryptoTableItem/>
       </tbody>
       </table>
     </div>

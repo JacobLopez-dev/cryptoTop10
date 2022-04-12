@@ -4,6 +4,7 @@ import SideMenu from './components/layout/SideMenu';
 import Articles from './pages/Articles';
 import Home from "./pages/Home";
 import News from './pages/News';
+import CryptoPage from './components/layout/CryptoPage';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/articles" element={<Articles/>}/>
         <Route path="/news" element={<News/>}/>
+        <Route path='/crypto/:cryptoId' element={<CryptoPage />} />
       </Routes>
       </main>
       </div>
