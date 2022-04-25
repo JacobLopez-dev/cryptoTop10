@@ -15,9 +15,9 @@ function CryptoTableItem() {
                 <td>{count++}</td>
                 <td>{crypto.name} <span className="text-sm text-stone-400">{crypto.symbol}</span> </td>
                 <td><span className="text-sm text-stone-400">$</span> {( 1 * crypto.quote.USD.price.toFixed(2)).toLocaleString("en-US")}</td>
-                <td><span className="text-sm text-stone-400">$</span> {(Math.trunc(crypto.circulating_supply) * crypto.quote.USD.price.toFixed(0)).toLocaleString("en-US") }</td>
+                <td><span className="text-sm text-stone-400">$</span> {Math.trunc(crypto.quote.USD.market_cap).toLocaleString("en-US")}</td>
                 <td>
-                <Link to={`/crypto/${crypto.name}`}>
+                <Link to={`/crypto/${crypto.slug}`}>
                   <button className="btn" id={crypto.name}>View More</button>
                 </Link>
                 </td>

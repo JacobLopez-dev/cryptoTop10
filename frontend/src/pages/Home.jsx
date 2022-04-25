@@ -1,6 +1,6 @@
 import {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {getSingleCrypto, getTopCryptos, reset} from '../features/topCryptos/topCryptosSlice'
+import { getTopCryptos, reset} from '../features/topCryptos/topCryptosSlice'
 import CryptoTable from '../components/cryptos/CryptoTable'
 
 function Home() {
@@ -14,15 +14,19 @@ function Home() {
         if(isSuccess) {
             dispatch(reset())
         }
-        console.log('from effect 2')
+        console.log('from effect 1')
     }
     
 }, [dispatch, isSuccess])
 
   useEffect(() => {
      dispatch(getTopCryptos())
-     console.log('from effect 1')
+     console.log('from effect 2')
   }, [dispatch])
+
+  console.log(cryptos)
+
+
 
   return (
    <>
