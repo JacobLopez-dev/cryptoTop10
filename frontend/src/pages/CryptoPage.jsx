@@ -1,60 +1,46 @@
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {getSingleCrypto, reset} from '../features/topCryptos/topCryptosSlice'
+import {getSingleCrypto, getTopCryptos, reset} from '../features/topCryptos/topCryptosSlice'
 import Stats from '../components/cryptos/Stats'
 import CryptoConverter from '../components/cryptos/CryptoConverter'
-// import BackButton from '../components/buttons/BackButton'
+import flattenObj from '../utils/flattenObject'
 
 function CryptoPage() {
     const { isSuccess, singleCrypto, cryptos} = useSelector((state) => state.cryptos)
     let {cryptoSlug} = useParams();
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        return () => {
-            if(isSuccess) {
-                dispatch(reset())
-            }
-            console.log('from crypto page')
-        }
-        
-    }, [dispatch, isSuccess])
+    // Reset state after successful data retrieval 
+    // useEffect(() => {
+    //     return () => {
+    //         if(isSuccess) {
+    //             dispatch(reset())
+    //         }
+    //         console.log('Crypto Page Reset')
+    //     }
+    // }, [dispatch, isSuccess])
 
+    // Get the data for a single crypto 
+    // Then call for the current top 10 again **Trying to find a way to limit API calls, homepage: 1 call , cryptoPage: 2 calls **
     useEffect(() =>{
+        dispatch(getTopCryptos())
         dispatch(getSingleCrypto(cryptoSlug))
+        console.log('Crypto page data dispatches')
     },[dispatch, cryptoSlug])
+     
+    // destructure data from flattened Single Crypto Object
+    let flattenedSingleCrypto = flattenObj(singleCrypto)
+    let {logo, name, symbol, slug} = flattenedSingleCrypto
+    // Filter the top 10 to get data for the single crypto requested to access market data
+    let cryptoMarketData = cryptos.filter(crypto => crypto.slug === cryptoSlug)
+    let flattenedCryptoMarketData = flattenObj(cryptoMarketData)
+    let {cmc_rank} = flattenedCryptoMarketData
 
-    // Currently if a crypto runs on a blockchain like Etherum it will flatten the object but replace the correct data with the data as it relates to etherum
-    const flattenObj = (ob) => {
-        // The object which contains the
-        // final result
-        let result = {};
-     
-        // loop through the object "ob"
-        for (const i in ob) {
-            // We check the type of the i using
-            // typeof() function and recursively
-            // call the function again
-            if ((typeof ob[i]) === 'object' && !Array.isArray(ob[i])) {
-                const temp = flattenObj(ob[i]);
-                for (const j in temp) {
-                    // Store temp in result
-                    result[ j] = temp[j];
-                }
-            }
-            // Else store ob[i] in result directly
-            else {
-                result[i] = ob[i];
-            }
-        }
-        return result;
-    };
-     
-    console.log(flattenObj(singleCrypto))
-    console.log(singleCrypto)
-    console.log(cryptos)
-    let {logo, name, symbol} = flattenObj(singleCrypto)
+    // Logs 
+    console.log(flattenedSingleCrypto)
+    console.log(flattenedCryptoMarketData)
+    // End Logs
 
   return (
     <div>
@@ -65,13 +51,13 @@ function CryptoPage() {
         <main>
         <div className="flex flex-col w-full lg:flex-row mt-3 p-3">
             <div className="grid flex-grow h-fit card bg-base-300 p-3 rounded-box place-items-center border-red-400">
-                <Stats/>
+                <Stats cmcRank={cmc_rank}/>
             </div> 
 
             <div className="divider lg:divider-horizontal"></div> 
 
             <div className="grid flex-grow h-fit card bg-base-300 p-3 rounded-box place-items-center">
-                <CryptoConverter/>
+                <CryptoConverter />
             </div>
         </div>
         </main>

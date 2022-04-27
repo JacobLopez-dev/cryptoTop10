@@ -14,14 +14,14 @@ function Home() {
         if(isSuccess) {
             dispatch(reset())
         }
-        console.log('from effect 1')
+        console.log('home page reset')
     }
     
 }, [dispatch, isSuccess])
 
   useEffect(() => {
      dispatch(getTopCryptos())
-     console.log('from effect 2')
+     console.log('Home page get dispatch')
   }, [dispatch])
 
   console.log(cryptos)
