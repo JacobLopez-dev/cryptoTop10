@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux'
-import flattenObj from '../../utils/flattenObject';
+import cryptoFlatten from '../../utils/flattenObject';
 import {FaExchangeAlt} from 'react-icons/fa'
 
 function CryptoConverter() {
@@ -12,7 +12,7 @@ function CryptoConverter() {
     }
 
 
-    let {symbol} = flattenObj(singleCrypto)
+    let {symbol} = cryptoFlatten.flattenSingleCrypto(singleCrypto)
 
   return (
     <div className="card bg-neutral p-3 text-neutral-content">
