@@ -29,7 +29,7 @@ const getTopTen = asyncHandler(async (req,res) => {
 // https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?slug=bitcoin
 
 const getSingleCrypto = asyncHandler(async(req,res) => {
-    const response = await coinmarketcap.get(`/info?&slug=${req.params.singleCrypto}`)
+    const response = await coinmarketcap.get(`/info?&id=${req.params.singleCrypto}`)
 
     if(!response){
         res.status(400)

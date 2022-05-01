@@ -22,10 +22,10 @@ async(_, thunkApi) => {
 })
 
 export const getSingleCrypto = createAsyncThunk('cryptos/getSingleCrypto',
-async(crypto, thunkApi) => {
+async(cryptoID, thunkApi) => {
     try{
-        let response = await cryptoService.getSingleCrypto(crypto)
-        return response.data
+        let response = await cryptoService.getSingleCrypto(cryptoID)
+        return response.data[cryptoID]
     }catch(error){
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
         return (message)

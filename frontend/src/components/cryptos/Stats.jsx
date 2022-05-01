@@ -1,8 +1,4 @@
 function Stats({marketCap, price, change}) {
-
-  const text_color = {
-    color: change % 2 === 0 ? "green" : "red"
-  }
  
   return (
     <div className="stats stats-vertical shadow">
@@ -21,7 +17,7 @@ function Stats({marketCap, price, change}) {
   
         <div className="stat">
             <div className="stat-title">24 Hour change</div>
-            {change && <div style={text_color} className="stat-value">%{change.toFixed(2)}</div>}
+            {change && <div style={{color: Math.sign(change) === 1 || Math.sign(change) % 2 === 0 ? "green" : 'red'}} className="stat-value">%{change.toFixed(3)}</div>}
             <div className="stat-desc"></div>
          </div>
   

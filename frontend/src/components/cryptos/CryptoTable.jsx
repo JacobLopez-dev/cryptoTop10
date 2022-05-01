@@ -20,6 +20,7 @@ function CryptoTable() {
             <th>Name</th>
             <th>Current Price</th>
             <th>Market Cap</th>
+            <th>24hr % +/-</th>
             <th>More Info</th>
           </tr>
         </thead>

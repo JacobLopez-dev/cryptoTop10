@@ -8,7 +8,7 @@ import cryptoFlatten from '../utils/flattenObject'
 
 function CryptoPage() {
     const { isSuccess, singleCrypto, cryptos} = useSelector((state) => state.cryptos)
-    let {cryptoSlugParam} = useParams();
+    let {cryptoID} = useParams();
     const dispatch = useDispatch()
 
     // Reset state after successful data retrieval 
@@ -25,25 +25,25 @@ function CryptoPage() {
     // Then call for the current top 10 again **Trying to find a way to limit API calls, homepage: 1 call , cryptoPage: 2 calls **
     useEffect(() =>{
         dispatch(getTopCryptos())
-        dispatch(getSingleCrypto(cryptoSlugParam))
+        dispatch(getSingleCrypto(cryptoID))
         console.log('Crypto page data dispatches')
-    },[dispatch, cryptoSlugParam])
+    },[dispatch, cryptoID])
      
 
     // // Filter the top 10 to get data for the single crypto requested to access market data
-    let cryptoMarketData = cryptos.filter(crypto => crypto.slug === cryptoSlugParam)
+    let cryptoMarketData = cryptos.filter(crypto => crypto.id === parseInt(cryptoID))
     
     // Flatten meta Data && the marketdata for that crypto
     let flattenedCryptoMarketData = cryptoFlatten.flattenSingleCrypto(cryptoMarketData)
-    let flattenedSingleCrypto =  cryptoFlatten.flattenSingleCrypto(singleCrypto)
     
     // destructure data from flattened Single Crypto Object
     let {cmc_rank, market_cap, price, percent_change_24h} = flattenedCryptoMarketData
-    let {logo, name, symbol, slug} = flattenedSingleCrypto
+    let {logo, name, symbol, slug} = singleCrypto
 
     // // Logs 
     console.log(singleCrypto)
-    console.log(flattenedSingleCrypto)
+    // console.log(cryptos)
+    // console.log(flattenedSingleCrypto)
     console.log(cryptoMarketData)
     console.log(flattenedCryptoMarketData)
  // End Logs

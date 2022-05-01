@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/articles" element={<Articles/>}/>
         <Route path="/news" element={<News/>}/>
-        <Route path='/crypto/:cryptoSlugParam' element={<CryptoPage />} />
+        <Route path='/crypto/:cryptoID' element={<CryptoPage />} />
       </Routes>
       </main>
       </div>

@@ -8,8 +8,8 @@ const getTopCryptos = async () =>{
 }
 
 // Get single crypto meta data
-const getSingleCrypto = async (crypto) => {
-    const response = await axios.get(API_URL + `/${crypto}`)
+const getSingleCrypto = async (cryptoID) => {
+    const response = await axios.get(API_URL + `/${cryptoID}`)
     return response.data
 }
 
