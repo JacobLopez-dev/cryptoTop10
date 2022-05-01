@@ -1,8 +1,7 @@
 function Stats({marketCap, price, change}) {
- 
+
   return (
     <div className="stats stats-vertical shadow">
-  
         <div className="stat">
             <div className="stat-title">Current Price</div>
             {price && <div className="stat-value">${price.toLocaleString("en-US")}</div>}

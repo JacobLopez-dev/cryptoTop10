@@ -34,18 +34,18 @@ function CryptoPage() {
     let cryptoMarketData = cryptos.filter(crypto => crypto.id === parseInt(cryptoID))
     
     // Flatten meta Data && the marketdata for that crypto
-    let flattenedCryptoMarketData = cryptoFlatten.flattenSingleCrypto(cryptoMarketData)
+    let flattenedCryptoMarketData = cryptoFlatten.flattenMarketData(cryptoMarketData)
     
     // destructure data from flattened Single Crypto Object
     let {cmc_rank, market_cap, price, percent_change_24h} = flattenedCryptoMarketData
     let {logo, name, symbol, slug} = singleCrypto
 
     // // Logs 
-    console.log(singleCrypto)
+    // console.log(singleCrypto)
     // console.log(cryptos)
-    // console.log(flattenedSingleCrypto)
-    console.log(cryptoMarketData)
     console.log(flattenedCryptoMarketData)
+
+    // console.log(flattenedCryptoMarketData)
  // End Logs
 
   return (
@@ -58,7 +58,7 @@ function CryptoPage() {
         <main>
         <div className="flex flex-col w-full lg:flex-row mt-3 p-3">
             <div className="grid flex-grow h-fit card bg-base-300 p-3 rounded-box place-items-center border-red-400">
-                <Stats marketCap = {market_cap} price={price} change={percent_change_24h}/>
+                <Stats marketCap={market_cap} price={price} change={percent_change_24h}/>
             </div> 
 
             <div className="divider lg:divider-horizontal"></div> 

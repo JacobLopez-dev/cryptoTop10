@@ -31,7 +31,7 @@ function flattenSingleCrypto(ob){
         return result;
 }
 
-const flattenSingleCrypto2 = (arr) => {
+const flattenMarketData = (arr) => {
     const flatObject = {};
     for(let i=0; i<arr.length; i++){
        for(const property in arr[i]){
@@ -41,22 +41,13 @@ const flattenSingleCrypto2 = (arr) => {
           flatObject[`${property}`] = arr[i][property];
        }
     };
-    return flatObject;
+    return flattenSingleCrypto(flatObject);
  }
 
-function flattenMarketData(json){
-    var result = [];
-    var keys = Object.keys(json);
-    keys.forEach(function(key){
-        result.push(json[key]);
-    });
-    return result;
-}
 
 const cryptoFlatten = {
-    flattenMarketData,
     flattenSingleCrypto,
-    flattenSingleCrypto2
+    flattenMarketData
 }
 
 export default cryptoFlatten
