@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {getSingleCrypto, getTopCryptos, reset} from '../features/topCryptos/topCryptosSlice'
 import Stats from '../components/cryptos/Stats'
 import CryptoConverter from '../components/cryptos/CryptoConverter'
+import CryptoSocials from '../components/cryptos/CryptoSocials'
 import cryptoFlatten from '../utils/flattenObject'
 
 function CryptoPage() {
@@ -37,11 +38,10 @@ function CryptoPage() {
     let flattenedCryptoMarketData = cryptoFlatten.flattenMarketData(cryptoMarketData)
     
     // destructure data from flattened Single Crypto Object
-    let {cmc_rank, market_cap, price, percent_change_24h} = flattenedCryptoMarketData
-    let {logo, name, symbol, slug} = singleCrypto
-
+    let {cmc_rank, market_cap, price, percent_change_24h, volume_24h, volume_change_24h} = flattenedCryptoMarketData
+    let {logo, name, symbol, slug, urls} = singleCrypto
     // // Logs 
-    // console.log(singleCrypto)
+    console.log(singleCrypto)
     // console.log(cryptos)
     console.log(flattenedCryptoMarketData)
 
@@ -49,27 +49,37 @@ function CryptoPage() {
  // End Logs
 
   return (
-    <div>
-        <header className='flex items-center bg-primary p-3 rounded-b-3xl '>
-        
-            {logo && <figure><img className='mask mask-circle bg-white' src={`${logo}`} alt="Album"/></figure>}
-            <h2 className='m-3 text-2xl'>{name} <span className='text-sm'>{symbol}</span></h2>
-        </header>
-        <main>
-        <div className="flex flex-col w-full lg:flex-row mt-3 p-3">
-            <div className="grid flex-grow h-fit card bg-base-300 p-3 rounded-box place-items-center border-red-400">
-                <Stats marketCap={market_cap} price={price} change={percent_change_24h}/>
-            </div> 
-
-            <div className="divider lg:divider-horizontal"></div> 
-
-            <div className="grid flex-grow h-fit card bg-base-300 p-3 rounded-box place-items-center">
-                <CryptoConverter />
-            </div>
-        </div>
-        </main>
-    </div>
+    <>
+     <header className='flex items-center bg-primary p-3 rounded-b-3xl w-full'>
+       {logo && <img className='mask mask-circle bg-white' src={`${logo}`} alt={`${name}`}/>}
+        <h2 className='ml-3 text-2xl'>{name} </h2>
+        <h2 className='mt-2 ml-1 text-sm'>{symbol}</h2>
+        <h3 className='ml-auto text-2xl'>Rank: {cmc_rank}</h3>
+     </header>
+     <main className='grid grid-cols-2 grid-rows-2 m-5 gap-5'>
+        <Stats marketCap={market_cap} price={price} change={percent_change_24h} volume={volume_24h} volumeChange={volume_change_24h}/>
+        <CryptoSocials urls={urls}/>
+        <CryptoConverter/>
+     </main>
+    </>
   )
 }
 
 export default CryptoPage
+
+{/* <div> */}
+    //     <main>
+    //     <div className="flex flex-col w-full lg:flex-row mt-3 p-3">
+    //         <div className="grid flex-grow h-fit card bg-base-300 p-3 rounded-box place-items-center border-red-400">
+    //             <Stats marketCap={market_cap} price={price} change={percent_change_24h}/>
+    //         </div> 
+
+    //         <div className="divider lg:divider-horizontal"></div> 
+
+    //         <div className="grid flex-grow h-fit card bg-base-300 p-3 rounded-box place-items-center">
+    //             {/* <CryptoConverter /> */}
+    //             <CryptoSocials/>
+    //         </div>
+    //     </div>
+    //     </main>
+    // </div>
