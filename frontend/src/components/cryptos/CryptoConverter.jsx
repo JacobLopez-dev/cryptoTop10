@@ -14,7 +14,7 @@ function CryptoConverter() {
     let {symbol} = singleCrypto
 
   return (
-    <div className="card bg-neutral p-3 text-neutral-content">
+    <div className="card bg-neutral p-3 text-neutral-content md:col-span-2 lg:col-span-1 col-span-1">
         <div className="card-body items-center text-center">
             <h2 className="card-title">Crypto converter</h2>
 

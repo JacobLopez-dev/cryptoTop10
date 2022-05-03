@@ -39,7 +39,7 @@ function CryptoPage() {
     
     // destructure data from flattened Single Crypto Object
     let {cmc_rank, market_cap, price, percent_change_24h, volume_24h, volume_change_24h} = flattenedCryptoMarketData
-    let {logo, name, symbol, slug, urls} = singleCrypto
+    let {logo, name, symbol, urls} = singleCrypto
     // // Logs 
     console.log(singleCrypto)
     // console.log(cryptos)
@@ -56,30 +56,14 @@ function CryptoPage() {
         <h2 className='mt-2 ml-1 text-sm'>{symbol}</h2>
         <h3 className='ml-auto text-2xl'>Rank: {cmc_rank}</h3>
      </header>
-     <main className='grid grid-cols-2 grid-rows-2 m-5 gap-5'>
+
+     <main className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-6'>
         <Stats marketCap={market_cap} price={price} change={percent_change_24h} volume={volume_24h} volumeChange={volume_change_24h}/>
-        <CryptoSocials urls={urls}/>
         <CryptoConverter/>
+        <CryptoSocials urls={urls}/>
      </main>
     </>
   )
 }
 
 export default CryptoPage
-
-{/* <div> */}
-    //     <main>
-    //     <div className="flex flex-col w-full lg:flex-row mt-3 p-3">
-    //         <div className="grid flex-grow h-fit card bg-base-300 p-3 rounded-box place-items-center border-red-400">
-    //             <Stats marketCap={market_cap} price={price} change={percent_change_24h}/>
-    //         </div> 
-
-    //         <div className="divider lg:divider-horizontal"></div> 
-
-    //         <div className="grid flex-grow h-fit card bg-base-300 p-3 rounded-box place-items-center">
-    //             {/* <CryptoConverter /> */}
-    //             <CryptoSocials/>
-    //         </div>
-    //     </div>
-    //     </main>
-    // </div>

@@ -1,6 +1,8 @@
 import {useSelector} from 'react-redux'
 import CryptoTableItem from '../cryptos/CryptoTableItem'
 import Spinner from '../Spinner'
+import { motion, AnimatePresence } from 'framer-motion';
+
 
 function CryptoTable() {
 
@@ -12,8 +14,15 @@ function CryptoTable() {
     }
     
   return (
-    <div className="overflow-x-auto mt-5">
-      <table className="table w-full">
+    <div className="overflow-x-auto mt-5 grid">
+       <AnimatePresence>
+      <motion.div  className="grid  w-11/12 justify-self-center"
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}
+        transition={{ duration: 1 }}
+      >
+    <table className="table">
         <thead>
           <tr>
             <th></th>
@@ -28,6 +37,9 @@ function CryptoTable() {
         <CryptoTableItem/>
       </tbody>
       </table>
+      </motion.div>
+      </AnimatePresence>
+      <div className="divider"></div>
     </div>
   )
 }

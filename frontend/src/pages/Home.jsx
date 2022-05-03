@@ -2,6 +2,7 @@ import {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { getTopCryptos, reset} from '../features/topCryptos/topCryptosSlice'
 import CryptoTable from '../components/cryptos/CryptoTable'
+import Hero from '../components/layout/Hero'
 
 function Home() {
 
@@ -30,8 +31,9 @@ function Home() {
 
   return (
    <>
+    
+    <Hero/>
     <CryptoTable/>
-    <div className="divider"></div>
    </>
   )
 }

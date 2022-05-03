@@ -1,7 +1,7 @@
 function Stats({marketCap, price, change, volume, volumeChange}) {
 
   return (
-    <div className="stats bg-primary-content stats-vertical shadow col-span-2">
+    <div className="stats bg-neutral mt-5 border-2 text-neutral-content stats-vertical shadow col-span-1 lg:col-span-2 md:col-span-2">
         <div className="stat">
             <div className="stat-title accent">Current Price</div>
             {price && <div className="stat-value">${price.toLocaleString("en-US")}</div>}

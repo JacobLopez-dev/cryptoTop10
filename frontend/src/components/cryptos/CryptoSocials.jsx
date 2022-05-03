@@ -5,15 +5,15 @@ function CryptoSocials({urls}) {
 }
 
   return (
-    <div className="grid grid-cols-2 grid-rows-2 gap-5">
-      {urls && urls.twitter.length !== 0 && <div className="card w-80 h-40 bg-neutral text-neutral-content">
+    <div className="grid lg:grid-cols-2 lg:grid-rows-2 md:grid-cols-2 md:col-span-2 lg:col-span-1 col-span-1 gap-3 justify-items-center">
+      {urls && urls.twitter.length !== 0 && <div className="card w-60 h-40 bg-neutral text-neutral-content">
         <div className="card-body items-center text-center">
           <h2 className="card-title">Twitter</h2>
           <button onClick={()=>handleClick(urls.twitter)} className="btn btn-primary">Twitter</button>
       </div>
     </div>}
 
-    {urls && urls.website && <div className="card w-80 h-40 bg-neutral text-neutral-content">
+    {urls && urls.website && <div className="card w-60 h-40 bg-neutral text-neutral-content">
         <div className="card-body items-center text-center">
           <h2 className="card-title">Website</h2>
           <button onClick={()=>handleClick(urls.website[0])} className="btn btn-primary">Website</button>
@@ -21,14 +21,14 @@ function CryptoSocials({urls}) {
     </div>}
 
 
-    {urls && urls.reddit && <div className="card w-80 h-40 bg-neutral text-neutral-content">
+    {urls && urls.reddit && <div className="card w-60 h-40 bg-neutral text-neutral-content">
         <div className="card-body items-center text-center">
           <h2 className="card-title">Reddit</h2>
           <button onClick={()=>handleClick(urls.reddit)} className="btn btn-primary">Reddit</button>
       </div>
     </div>}
 
-    {urls && urls.technical_doc && <div className="card w-80 h-40 bg-neutral text-neutral-content">
+    {urls && urls.technical_doc && <div className="card w-60 h-40 bg-neutral text-neutral-content">
         <div className="card-body items-center text-center">
           <h2 className="card-title">Technical Doc</h2>
           <button onClick={()=>handleClick(urls.technical_doc)} className="btn btn-primary">Technical Doc</button>
