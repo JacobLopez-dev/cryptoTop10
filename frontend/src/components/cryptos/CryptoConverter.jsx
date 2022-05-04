@@ -26,7 +26,7 @@ function CryptoConverter() {
                 </label>
                 <label className="input-group">
                     <input type="text" placeholder="1" className="input input-bordered"/>
-                     <span>{symbol}</span>
+                     <span className='bg-primary'>{symbol}</span>
                 </label>
             </div>
             <FaExchangeAlt className='text-3xl mt-5'/>
@@ -37,7 +37,7 @@ function CryptoConverter() {
                 </label>
                 <label className="input-group">
                     <input type="text" placeholder="1" className="input input-bordered"/>
-                     <span>USD</span>
+                     <span className='bg-secondary'>USD</span>
                 </label>
             </div>
 

@@ -15,7 +15,7 @@ function App() {
     <input id="my-drawer-3" type="checkbox" className="drawer-toggle"/> 
       <div className="drawer-content flex flex-col justify-between ">
       <NavBar/>
-      <main className="w-11/12 relative mx-auto h-auto">
+      <main className="w-full relative mx-auto h-auto">
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/articles" element={<Articles/>}/>

@@ -13,9 +13,10 @@ const getSingleCrypto = async (cryptoID) => {
     return response.data
 }
 
+
 const cryptoService = {
     getTopCryptos,
-    getSingleCrypto
+    getSingleCrypto,
 }
 
 export default cryptoService

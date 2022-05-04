@@ -14,9 +14,9 @@ function CryptoTable() {
     }
     
   return (
-    <div className="overflow-x-auto mt-5 grid">
+    <div className="overflow-x-auto w-full mt-5 grid">
        <AnimatePresence>
-      <motion.div  className="grid  w-11/12 justify-self-center"
+      <motion.div  className="grid lg:w-11/12 justify-self-center"
         initial={{opacity: 0}}
         animate={{opacity: 1}}
         exit={{opacity: 0}}
