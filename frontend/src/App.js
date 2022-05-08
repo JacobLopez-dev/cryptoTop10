@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import NavBar from "./components/layout/NavBar"
 import SideMenu from './components/layout/SideMenu';
@@ -9,10 +10,28 @@ import Footer from './components/layout/Footer';
 
 
 function App() {
+  const [menuToggle, setMenuToggle] = useState('checked')
+
+  const toggleMenu = (e) => {
+    if(menuToggle === 'unchecked'){
+      setMenuToggle('checked')
+      console.log(menuToggle)
+    }else{
+      setMenuToggle('unchecked')
+      console.log(menuToggle)
+    }
+  }
+  
+  useEffect(()=>{
+    const menuButton = document.querySelector('.drawer-toggle')
+    let menuChecked = menuToggle === 'unchecked' ? true : false
+    menuButton.checked = menuChecked
+  }, [menuToggle])
+
   return (
     <Router>
     <div data-theme="dark" className="drawer drawer-mobile">
-    <input id="my-drawer-3" type="checkbox" className="drawer-toggle"/> 
+    <input id="my-drawer-3" type="checkbox" className="drawer-toggle" onClick={(e)=>toggleMenu(e)}/> 
       <div className="drawer-content flex flex-col justify-between ">
       <NavBar/>
       <main className="w-full relative mx-auto h-auto">
@@ -25,7 +44,7 @@ function App() {
       </main>
       <Footer/>
       </div>
-      <SideMenu/>
+      <SideMenu toggleMenu={toggleMenu}/>
     </div>
     </Router>
   );

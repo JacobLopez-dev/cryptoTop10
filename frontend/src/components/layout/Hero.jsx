@@ -7,7 +7,7 @@ function Hero() {
             <div className="max-w-md">
                 <h1 className="text-5xl font-bold">Welcome</h1>
                 <p className="py-6">
-                    This is Crypto Top 10 - A crypto site for
+                    This is Crypto Top 10
                 </p>
             </div>
         </div>

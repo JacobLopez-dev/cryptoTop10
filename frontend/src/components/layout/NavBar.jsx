@@ -3,7 +3,7 @@ import ThemeToggle from '../buttons/ThemeToggle'
 
 function Navbar() {
   return (
-<>
+  <>
     <nav className='navbar bg-base-300 w-full sticky top-0 z-50'>
     <div className="flex-none lg:hidden">
         <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
@@ -17,7 +17,7 @@ function Navbar() {
         <ThemeToggle/>
       </div>
     </nav>
-</>
+  </>
   )
 }
 
