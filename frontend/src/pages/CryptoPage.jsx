@@ -59,7 +59,7 @@ function CryptoPage() {
 
      <main className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-6'>
         <Stats marketCap={market_cap} price={price} change={percent_change_24h} volume={volume_24h} volumeChange={volume_change_24h}/>
-        <CryptoConverter placeHolderPrice={price} symbol={symbol}/>
+        <CryptoConverter price={price} symbol={symbol}/>
         <CryptoSocials urls={urls}/>
      </main>
     </>

@@ -15,10 +15,10 @@ function App() {
   const toggleMenu = (e) => {
     if(menuToggle === 'unchecked'){
       setMenuToggle('checked')
-      console.log(menuToggle)
+      // console.log(menuToggle)
     }else{
       setMenuToggle('unchecked')
-      console.log(menuToggle)
+      // console.log(menuToggle)
     }
   }
   
