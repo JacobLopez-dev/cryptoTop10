@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import {useState} from 'react'
+// import {useSelector, useDispatch} from 'react-redux'
 import {FaExchangeAlt} from 'react-icons/fa'
 
 function CryptoConverter({price, symbol}) {
