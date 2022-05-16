@@ -49,8 +49,8 @@ function CryptoPage() {
  // End Logs
 
   return (
-    <>
-     <header className='flex items-center bg-primary p-3 rounded-b-3xl w-full'>
+    <div className='lg:mb-20'>
+     <header className='flex items-center bg-primary p-5 rounded-b-3xl w-full'>
        {logo && <img className='mask mask-circle bg-white' src={`${logo}`} alt={`${name}`}/>}
         <h2 className='ml-3 text-2xl'>{name} </h2>
         <h2 className='mt-2 ml-1 text-sm'>{symbol}</h2>
@@ -62,7 +62,7 @@ function CryptoPage() {
         <CryptoConverter price={price} symbol={symbol}/>
         <CryptoSocials urls={urls}/>
      </div>
-    </>
+    </div>
   )
 }
 
