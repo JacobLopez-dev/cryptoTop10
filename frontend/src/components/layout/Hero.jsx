@@ -1,5 +1,3 @@
-
-
 function Hero() {
   return (
     <div className="hero h-96 bg-base-200">

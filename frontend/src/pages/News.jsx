@@ -1,5 +1,8 @@
 
+
 function News() {
+
+
   return (
     <div className="flex justify-center items-center w-full h-full">
     <div className="card w-96 bg-base-100 shadow-xl">

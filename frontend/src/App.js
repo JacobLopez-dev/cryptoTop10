@@ -34,7 +34,7 @@ function App() {
     <input id="my-drawer-3" type="checkbox" className="drawer-toggle" onClick={(e)=>toggleMenu(e)}/> 
       <div className="drawer-content flex flex-col justify-between ">
       <NavBar/>
-      <main className="w-full relative mx-auto h-auto">
+      <main className="w-full relative mx-auto h-auto lg:h-fit">
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/articles" element={<Articles/>}/>

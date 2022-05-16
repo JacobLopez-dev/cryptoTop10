@@ -23,9 +23,9 @@ function CryptoTableItem() {
                 </td>
                 <td><span className="text-sm text-stone-400">$</span> {( 1 * crypto.quote.USD.price.toFixed(2)).toLocaleString("en-US")}</td>
                 <td><span className="text-sm text-stone-400">$</span> {Math.trunc(crypto.quote.USD.market_cap).toLocaleString("en-US")}</td>
-                <td><span className="text-sm text-stone-400">$</span> <span style={{color: Math.sign(crypto.quote.USD.percent_change_24h) === 1 || Math.sign(crypto.quote.USD.percent_change_24h) % 2 === 0 ? "green" : 'red'}}>
-                      {crypto.quote.USD.percent_change_24h.toFixed(3)}
-                      
+                <td><span className="text-sm text-stone-400"></span><span style={{color: Math.sign(crypto.quote.USD.percent_change_24h) === 1 || Math.sign(crypto.quote.USD.percent_change_24h) % 2 === 0 ? "green" : 'red'}}> 
+                      {crypto.quote.USD.percent_change_24h.toFixed(3)} 
+                      % 
                     </span>
                   </td>
                 <td>
