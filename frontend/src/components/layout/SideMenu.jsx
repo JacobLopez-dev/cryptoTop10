@@ -9,7 +9,7 @@ function SideMenu({toggleMenu}) {
         <Link to="/" className='text-2xl'>Home</Link>
         </li>
         <li className='m-1' onClick={toggleMenu}>
-            <Link to="/articles" className='text-2xl'>Articles</Link>
+            <Link to="/guides" className='text-2xl'>Guides</Link>
         </li>
         <li className='m-1' onClick={toggleMenu}>
             <Link to="/news" className='text-2xl'>News</Link>

@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import NavBar from "./components/layout/NavBar"
 import SideMenu from './components/layout/SideMenu';
-import Articles from './pages/Articles';
 import Home from "./pages/Home";
+import Guides from './pages/Guides';
 import News from './pages/News';
 import CryptoPage from './pages/CryptoPage';
 import Footer from './components/layout/Footer';
@@ -37,7 +37,7 @@ function App() {
       <main className="w-full relative mx-auto h-auto lg:h-fit">
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/articles" element={<Articles/>}/>
+        <Route path="/guides" element={<Guides/>}/>
         <Route path="/news" element={<News/>}/>
         <Route path='/crypto/:cryptoID' element={<CryptoPage />} />
       </Routes>
