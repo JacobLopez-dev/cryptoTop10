@@ -42,10 +42,8 @@ function CryptoPage() {
     let {logo, name, symbol, urls} = singleCrypto
     // // Logs 
     console.log(singleCrypto)
-    // console.log(cryptos)
     console.log(flattenedCryptoMarketData)
 
-    // console.log(flattenedCryptoMarketData)
  // End Logs
 
   return (

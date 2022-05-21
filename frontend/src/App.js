@@ -6,7 +6,11 @@ import Home from "./pages/Home";
 import Guides from './pages/Guides';
 import News from './pages/News';
 import CryptoPage from './pages/CryptoPage';
+import Login from './pages/Login'
+import Register from './pages/Register'
 import Footer from './components/layout/Footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -40,12 +44,15 @@ function App() {
         <Route path="/guides" element={<Guides/>}/>
         <Route path="/news" element={<News/>}/>
         <Route path='/crypto/:cryptoID' element={<CryptoPage />} />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
       </Routes>
       </main>
       <Footer/>
       </div>
       <SideMenu toggleMenu={toggleMenu}/>
     </div>
+    <ToastContainer/>
     </Router>
   );
 }
