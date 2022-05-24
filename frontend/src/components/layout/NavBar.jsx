@@ -1,7 +1,19 @@
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import ThemeToggle from '../buttons/ThemeToggle'
+import {logout, reset} from '../../features/auth/authSlice'
 
 function Navbar() {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const {user} = useSelector((state) => state.auth)
+
+  const onLogout = () => {
+    dispatch(logout())
+    dispatch(reset())
+    navigate('/')
+  }
+
   return (
   <>
     <nav className='navbar bg-base-300 w-full sticky top-0 z-50'>
@@ -15,6 +27,7 @@ function Navbar() {
       </div>
       <div className="">
         <ThemeToggle/>
+        {user !== null && <button className='btn' onClick={onLogout}>Logout</button>}
       </div>
     </nav>
   </>

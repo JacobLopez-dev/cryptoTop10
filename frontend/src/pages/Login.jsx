@@ -1,7 +1,10 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import Spinner from '../components/Spinner'
 import {toast} from 'react-toastify'
-import {Link} from 'react-router-dom' 
+import {Link, useNavigate} from 'react-router-dom' 
 import {FaSignInAlt} from 'react-icons/fa'
+import {login, reset} from '../features/auth/authSlice'
+import {useSelector, useDispatch} from 'react-redux'
 
 function Login() {
 
@@ -12,6 +15,26 @@ function Login() {
 
   const {email, password} = formData
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const {user, isLoading, isSuccess, isError, message} = useSelector(state => state.auth)
+
+  useEffect(()=>{
+    if(isError){
+      toast.error(message, {
+        theme: 'dark'
+      })
+    }
+
+    if(isSuccess || user){
+      navigate('/')
+    }
+
+    dispatch(reset)
+  },[isError, message, dispatch, isSuccess, navigate, user])
+
+
   const onChange = (e) => {
     setFormData(prevState => ({
       ...prevState,
@@ -21,10 +44,16 @@ function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault()
-
+    const userData = {
+      email,
+      password
+    }
+    dispatch(login(userData))
   }
-  
-  console.log(formData)
+
+  if(isLoading){
+    return <Spinner/>
+  }
 
   return (
     <div className='p-3 flex flex-col items-center'>
@@ -50,7 +79,7 @@ function Login() {
             <div className="form-control">
               <label className="input-group input-group-vertical">
                 <span className='bg-secondary text-white'>Password</span>
-                <input type="text" placeholder="Enter your password" className="input focus:border-secondary w-full input-bordered" id='password' name='password' value={password} onChange={onChange} required/>
+                <input type="password" placeholder="Enter your password" className="input focus:border-secondary w-full input-bordered" id='password' name='password' value={password} onChange={onChange} required/>
               </label>
             </div>
 

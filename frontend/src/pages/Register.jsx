@@ -1,7 +1,11 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'
 import {toast} from 'react-toastify'
 import {FaRegUserCircle} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
+import {register, reset} from '../features/auth/authSlice'
+import Spinner from '../components/Spinner'
 
 function Register() {
 
@@ -13,6 +17,25 @@ function Register() {
   })
 
   const {name, email, password, password2} = formData
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const {user, isLoading, isSuccess, isError, message} = useSelector(state => state.auth)
+
+  useEffect(()=>{
+    if(isError){
+      toast.error(message, {
+        theme: 'dark'
+      })
+    }
+
+    if(isSuccess || user){
+      navigate('/')
+    }
+
+    dispatch(reset)
+  },[isError, message, dispatch, isSuccess, navigate, user])
 
   const onChange = (e) => {
     setFormData(prevState => ({
@@ -28,11 +51,21 @@ function Register() {
       toast.error('passwords do not match', {
         theme: 'dark'
       })
+    }else{
+      const userData = {
+        name,
+        email,
+        password
+      }
+
+      dispatch(register(userData))
     }
   }
 
-  console.log(formData)
-
+  if(isLoading){
+    return <Spinner/>
+  }
+  
   return (
     <div className='p-3 flex flex-col items-center'>
       <div className="card flex flex-col items-center bg-base-200 shadow-xl w-full lg:w-6/12 p-3">
@@ -64,14 +97,14 @@ function Register() {
             <div className="form-control">
               <label className="input-group input-group-vertical">
                 <span className='bg-secondary text-white'>Password</span>
-                <input type="text" placeholder="Enter your password" className="input focus:border-secondary w-full input-bordered" id='password' name='password' value={password} onChange={onChange} required/>
+                <input type="password" placeholder="Enter your password" className="input focus:border-secondary w-full input-bordered" autoComplete="on" id='password' name='password' value={password} onChange={onChange} required/>
               </label>
             </div>
 
             <div className="form-control">
               <label className="input-group input-group-vertical">
                 <span className='bg-secondary text-white'>Confrim</span>
-                <input type="text" placeholder="Confirm passowrde" className="input focus:border-secondary w-full input-bordered" id='password2' name='password2' value={password2} onChange={onChange} required/>
+                <input type="password" placeholder="Confirm passowrde" className="input focus:border-secondary w-full input-bordered" autoComplete="on" id='password2' name='password2' value={password2} onChange={onChange} required/>
 
               </label>
             </div>
