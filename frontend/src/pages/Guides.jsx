@@ -1,7 +1,8 @@
 // See sundae swap https://help.sundaeswap.finance/en/
-// import {useEffect} from 'react'
-// import {useDispatch} from 'react-redux'
-// import {reset} from '../features/topCryptos/topCryptosSlice'
+import {useEffect} from 'react'
+import {Link, useNavigate} from 'react-router-dom'
+import {FaBook, FaPenSquare} from 'react-icons/fa'
+import {useSelector, useDispatch} from 'react-redux'
 function Guides() {
 
 //   const dispatch = useDispatch()
@@ -13,15 +14,26 @@ function Guides() {
 //     }
 // }, [])
 
+const dispatch = useDispatch()
+const navigate = useNavigate()
+
+const {user} = useSelector(state => state.auth)
+
   return (
-    <div className="flex justify-center items-center w-full h-full">
-     <div className="card w-96 bg-base-100 shadow-xl">
-      <div className="card-body">
-        <h2 className="card-title">Feature Coming Soon!</h2>
-        <p>Here you will find all of the guides needed to get started with Crypto</p>
-      </div>
-    </div>
-    </div>
+    <div className="h-screen">
+      <header className='flex items-center bg-primary p-5 rounded-b-3xl w-full'>
+        <h2 className='ml-3 text-2xl flex items-center'>
+          Crypto Guides 
+          <FaBook className='ml-3'/>
+        </h2>
+        {user !== null && 
+        <Link className='ml-auto flex items-center hover:text-white' to='/new-guide'>
+          New Guide <FaPenSquare className='text-4xl'/> 
+        </Link>}
+      </header>
+          {/* guides */}
+          <div className="border-2">Guides</div>
+   </div>
   )
 }
 

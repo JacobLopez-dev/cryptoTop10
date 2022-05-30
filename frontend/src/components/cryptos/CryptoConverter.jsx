@@ -33,7 +33,7 @@ function CryptoConverter({price, symbol}) {
 
 
   return (
-    <div className="card bg-neutral p-3 text-neutral-content w-11/12 md:col-span-2 justify-self-center lg:col-span-1 col-span-1">
+    <div className="card bg-neutral p-3 text-neutral-content w-11/12 md:col-span-2 justify-self-center lg:col-span-1 col-span-1 border-2">
         <div className="card-body items-center text-center">
             <h2 className="card-title">Crypto converter</h2>
 

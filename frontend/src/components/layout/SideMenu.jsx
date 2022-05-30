@@ -1,18 +1,44 @@
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import {logout, reset} from '../../features/auth/authSlice'
+
 function SideMenu({toggleMenu}) {
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const {user} = useSelector(state => state.auth)
+
+  const onLogout = () => {
+    dispatch(logout())
+    dispatch(reset())
+    navigate('/')
+  }
+
   return (
     <div className="drawer-side">
       <label htmlFor="my-drawer-3" className="drawer-overlay"></label> 
-      <ul className="menu p-4 overflow-y-auto w-80 bg-base-200">
+      <ul className="menu p-4 overflow-y-auto w-56 bg-secondary text-secondary-content">
         {/* <!-- Sidebar content here --> */}
-        <li className='m-1' onClick={toggleMenu}>
-        <Link to="/" className='text-2xl'>Home</Link>
+        <li>
+          <div className="flex-1 px-2 mx-2 lg:hidden">
+            <Link to='/' className="btn btn-ghost normal-case text-2xl text-primary px-2 mx-2">Crypto Top 10</Link>
+          </div>
         </li>
+
         <li className='m-1' onClick={toggleMenu}>
-            <Link to="/guides" className='text-2xl'>Guides</Link>
+        <Link to="/" className='text-2xl hover:text-white'>Home</Link>
         </li>
+
         <li className='m-1' onClick={toggleMenu}>
-            <Link to="/news" className='text-2xl'>News</Link>
+            <Link to="/guides" className='text-2xl hover:text-white'>Guides</Link>
+        </li>
+
+        <li className='m-1' onClick={toggleMenu}>
+            <Link to="/news" className='text-2xl hover:text-white'>News</Link>
+        </li>
+
+        <li className='mt-auto'>
+        {user !== null && <button className='btn bg-primary text-white' onClick={onLogout}>Logout</button>}
         </li>
       </ul>
       

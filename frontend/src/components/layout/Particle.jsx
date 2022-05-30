@@ -27,7 +27,7 @@ function Particle() {
           fpsLimit: 120,
           particles: {
             number: {
-              value: 40,
+              value: 60,
             density: {
               enable: true,
               value_area: 800
@@ -61,7 +61,7 @@ function Particle() {
             },
             line_linked: {
               enable: true,
-              distance: 150,
+              distance: 100,
               color: "#ffffff",
               warp: true,
               opacity: 1,

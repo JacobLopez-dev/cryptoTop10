@@ -7,11 +7,11 @@ function ThemeToggle() {
     
     // Update state based on theme toggle
     const themeToggle = () => {
-        if(theme[0] === 'dark'){
-            setTheme(['emerald', 'checked'])
+        if(theme[0] === 'business'){
+            setTheme(['corporate', 'checked'])
             
         }else{
-            setTheme(['dark', 'unchecked'])
+            setTheme(['business', 'unchecked'])
         }
     }
 

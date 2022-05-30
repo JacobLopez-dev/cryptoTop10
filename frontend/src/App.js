@@ -8,6 +8,7 @@ import News from './pages/News';
 import CryptoPage from './pages/CryptoPage';
 import Login from './pages/Login'
 import Register from './pages/Register'
+import CreateGuide from './pages/CreateGuide';
 import Footer from './components/layout/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -38,12 +39,13 @@ function App() {
     <input id="my-drawer-3" type="checkbox" className="drawer-toggle" onClick={(e)=>toggleMenu(e)}/> 
       <div className="drawer-content flex flex-col justify-between ">
       <NavBar/>
-      <main className="w-full relative mx-auto h-auto lg:h-fit">
+      <main className="w-full relative mx-auto lg:h-fit">
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/guides" element={<Guides/>}/>
         <Route path="/news" element={<News/>}/>
         <Route path='/crypto/:cryptoID' element={<CryptoPage />} />
+        <Route path="/new-guide" element={<CreateGuide/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
       </Routes>

@@ -28,7 +28,7 @@ function Login() {
     }
 
     if(isSuccess || user){
-      navigate('/')
+      navigate('/guides')
     }
 
     dispatch(reset)
@@ -88,7 +88,7 @@ function Login() {
             </div>
 
             <div className="card-actions flex justify-center">
-              <Link to='/Register'>
+              <Link to='/register'>
                 <p className='hover:text-secondary-focus'>need an account?</p>
               </Link>
             </div>

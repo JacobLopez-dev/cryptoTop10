@@ -13,10 +13,10 @@ function Footer() {
             <Link to='/'>
                 Home
             </Link>
-            <Link to='/articles'>
-                Articles
+            <Link to='/guides'>
+                Guides
             </Link>
-            <Link to='/News'>
+            <Link to='/news'>
                 News
             </Link>
         </div> 

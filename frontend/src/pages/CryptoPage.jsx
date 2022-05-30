@@ -55,7 +55,7 @@ function CryptoPage() {
         <h3 className='ml-auto text-2xl'>Rank: {cmc_rank}</h3>
      </header>
 
-     <div className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-6'>
+     <div className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-6 p-3'>
         <Stats marketCap={market_cap} price={price} change={percent_change_24h} volume={volume_24h} volumeChange={volume_change_24h}/>
         <CryptoConverter price={price} symbol={symbol}/>
         <CryptoSocials urls={urls}/>
