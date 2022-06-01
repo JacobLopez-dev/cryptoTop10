@@ -24,6 +24,11 @@ const login = async ( userData ) => {
     return response.data
 }
 
+// get current user
+const currentUser = async ( userData ) => {
+    const response = await axios.post(API_URL + 'currentUser')
+}
+
 // Logout user
 const logout = () => localStorage.removeItem('user')
 

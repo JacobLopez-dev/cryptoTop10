@@ -6,8 +6,11 @@ import Home from "./pages/Home";
 import Guides from './pages/Guides';
 import News from './pages/News';
 import CryptoPage from './pages/CryptoPage';
+import AdminDashboard from './pages/AdminDashboard'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute';
 import CreateGuide from './pages/CreateGuide';
 import Footer from './components/layout/Footer';
 import { ToastContainer } from 'react-toastify';
@@ -45,9 +48,16 @@ function App() {
         <Route path="/guides" element={<Guides/>}/>
         <Route path="/news" element={<News/>}/>
         <Route path='/crypto/:cryptoID' element={<CryptoPage />} />
-        <Route path="/new-guide" element={<CreateGuide/>}/>
+        {/* Only accessible by logged in users */}
+        <Route path='/new-guide' element={<PrivateRoute/>}>
+          <Route path="/new-guide" element={<CreateGuide/>}/>
+        </Route>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
+        {/* Only accessible by admin */}
+        <Route path='/admin-dashboard' element={<AdminRoute/>}>
+          <Route path="/admin-dashboard" element={<AdminDashboard/>}/>
+        </Route>
       </Routes>
       </main>
       <Footer/>

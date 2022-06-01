@@ -1,19 +1,9 @@
-import {Link, useNavigate} from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import {Link} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 import ThemeToggle from '../buttons/ThemeToggle'
-import {logout, reset} from '../../features/auth/authSlice'
 
 function Navbar() {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
   const {user} = useSelector((state) => state.auth)
-
-  const onLogout = () => {
-    dispatch(logout())
-    dispatch(reset())
-    navigate('/')
-  }
-
 
   return (
   <>
@@ -27,8 +17,24 @@ function Navbar() {
         <Link to='/' className="btn btn-ghost normal-case text-2xl text-primary px-2 mx-2">Crypto Top 10</Link>
       </div>
       <div className="ml-auto">
-        <ThemeToggle/>
-        {user && <h1>Hello {user.name}</h1>}
+      {user && 
+        <div className="dropdown">
+          <label tabIndex="0" className='btn m-4'>{`Hello, ${user.name}`}</label>
+          <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+            {user.isAdmin && <li>
+              <Link to='/admin-dashboard'>Admin Dashboard</Link>
+            </li>}
+            <li>
+              <Link to='/new-guide'>New Guide</Link>
+            </li>
+            {/* Will eventually lead to user profile */}
+            <li>
+              <Link to='/profile'>Profile</Link>
+            </li>
+          </ul>
+        </div>
+      }
+      <ThemeToggle/>
       </div>
     </nav>
   </>

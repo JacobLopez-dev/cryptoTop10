@@ -28,7 +28,9 @@ const {user} = useSelector(state => state.auth)
         </h2>
         {user !== null && 
         <Link className='ml-auto flex items-center hover:text-white' to='/new-guide'>
-          New Guide <FaPenSquare className='text-4xl'/> 
+          <div className="tooltip tooltip-accent tooltip-bottom mr-2" data-tip="new guide">
+            <FaPenSquare className='text-4xl'/> 
+          </div>
         </Link>}
       </header>
           {/* guides */}

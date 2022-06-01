@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import articleReducer from '../features/articles/articleSlice'
+import guideReducer from '../features/guides/guidesSlice'
 import cryptoReducer from '../features/topCryptos/topCryptosSlice'
 import authReducer from '../features/auth/authSlice'
 
 export const store = configureStore({
   reducer: {
-    articles: articleReducer,
+    guides: guideReducer,
     cryptos: cryptoReducer,
     auth: authReducer
   },

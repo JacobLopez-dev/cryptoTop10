@@ -62,7 +62,8 @@ const loginUser = asyncHandler(async(req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
-            token: generateToken(user._id)
+            token: generateToken(user._id),
+            isAdmin: user.isAdmin
         })
     }else{
         res.status(401)
@@ -71,7 +72,7 @@ const loginUser = asyncHandler(async(req, res) => {
 })
 
 // @description GET current user
-// @route /api/users/me
+// @route /api/users/currentUser
 // @access Private
 const getCurrentUser = asyncHandler(async(req, res) => {
     const user = {

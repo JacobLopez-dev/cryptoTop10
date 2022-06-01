@@ -27,8 +27,12 @@ function Login() {
       })
     }
 
-    if(isSuccess || user){
-      navigate('/guides')
+    if(isSuccess && user.isAdmin){
+      navigate('/admin-dashboard')
+    }
+
+    if(isSuccess && user && !user.isAdmin){
+      navigate('/')
     }
 
     dispatch(reset)
@@ -79,7 +83,7 @@ function Login() {
             <div className="form-control">
               <label className="input-group input-group-vertical">
                 <span className='bg-secondary text-white'>Password</span>
-                <input type="password" placeholder="Enter your password" className="input focus:border-secondary w-full input-bordered" id='password' name='password' value={password} onChange={onChange} required/>
+                <input type="password" placeholder="Enter your password" className="input focus:border-secondary w-full input-bordered" id='password' name='password' autoComplete='on' value={password} onChange={onChange} required/>
               </label>
             </div>
 
