@@ -21,3 +21,8 @@
     height: 30%;
     background-repeat: no-repeat;
   }
+
+  .feature-icon{
+    width: 12vmin;
+    height: 12vmin;
+  }

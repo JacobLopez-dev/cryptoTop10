@@ -21,7 +21,7 @@ const {user} = useSelector(state => state.auth)
 
   return (
     <div className="h-screen">
-      <header className='flex items-center bg-primary p-5 rounded-b-3xl w-full'>
+      <header className='flex items-center bg-primary text-neutral-content p-5 rounded-b-3xl w-full'>
         <h2 className='ml-3 text-2xl flex items-center'>
           Crypto Guides 
           <FaBook className='ml-3'/>

@@ -61,9 +61,9 @@ function Login() {
 
   return (
     <div className='p-3 flex flex-col items-center'>
-      <div className="card flex flex-col items-center bg-base-200 shadow-xl w-full lg:w-6/12 p-3">
+      <div className="card flex flex-col items-center bg-primary shadow-xl w-full lg:w-6/12 p-3">
 
-        <section className='heading flex flex-col justify-center max-w-fit'>
+        <section className='heading flex flex-col justify-center max-w-fit text-neutral-content'>
           <h1 className='text-3xl flex justify-center'>
             <FaSignInAlt className='mr-1 '/> Login
           </h1>
@@ -88,12 +88,12 @@ function Login() {
             </div>
 
             <div className="card-actions flex justify-center">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn rounded-lg">Login</button>
             </div>
 
             <div className="card-actions flex justify-center">
               <Link to='/register'>
-                <p className='hover:text-secondary-focus'>need an account?</p>
+                <p className='hover:text-accent text-neutral-content'>need an account?</p>
               </Link>
             </div>
           </form>

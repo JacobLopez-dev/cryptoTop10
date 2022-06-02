@@ -13,6 +13,7 @@ import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 import CreateGuide from './pages/CreateGuide';
 import Footer from './components/layout/Footer';
+import ScrollToTop from './components/layout/ScrollToTop';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -38,7 +39,8 @@ function App() {
 
   return (
     <Router>
-    <div data-theme="dark" className="drawer drawer-mobile">
+    <ScrollToTop>
+    <div data-theme="dark" className="drawer">
     <input id="my-drawer-3" type="checkbox" className="drawer-toggle" onClick={(e)=>toggleMenu(e)}/> 
       <div className="drawer-content flex flex-col justify-between ">
       <NavBar/>
@@ -64,6 +66,7 @@ function App() {
       </div>
       <SideMenu toggleMenu={toggleMenu}/>
     </div>
+    </ScrollToTop>
     <ToastContainer/>
     </Router>
   );

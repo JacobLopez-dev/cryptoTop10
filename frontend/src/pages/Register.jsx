@@ -68,9 +68,9 @@ function Register() {
   
   return (
     <div className='p-3 flex flex-col items-center'>
-      <div className="card flex flex-col items-center bg-base-200 shadow-xl w-full lg:w-6/12 p-3">
+      <div className="card flex flex-col items-center bg-primary rounded-lg shadow-xl w-full lg:w-6/12 p-3">
 
-        <section className='heading flex flex-col justify-center max-w-fit'>
+        <section className='heading flex flex-col justify-center max-w-fit rounded-lg text-neutral-content'>
           <h1 className='text-3xl flex justify-center'>
             <FaRegUserCircle className='mr-1 '/> Register
           </h1>
@@ -109,11 +109,11 @@ function Register() {
               </label>
             </div>
             <div className="card-actions flex justify-center">
-              <button className="btn btn-primary">Register</button>
+              <button className="btn rounded-lg">Register</button>
             </div>
             <div className="card-actions flex justify-center">
               <Link to='/login'>
-                <p className='hover:text-secondary-focus'>Already have an account?</p>
+                <p className='hover:text-accent text-neutral-content'>Already have an account?</p>
               </Link>
             </div>
           </form>

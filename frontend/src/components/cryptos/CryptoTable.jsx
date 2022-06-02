@@ -39,7 +39,6 @@ function CryptoTable() {
       </table>
       </motion.div>
       </AnimatePresence>
-      <div className="divider"></div>
     </div>
   )
 }

@@ -48,7 +48,7 @@ function CryptoPage() {
 
   return (
     <div className='lg:mb-20'>
-     <header className='flex items-center bg-primary p-5 rounded-b-3xl w-full'>
+     <header className='flex items-center bg-primary p-5 rounded-b-3xl text-neutral-content w-full'>
        {logo && <img className='mask mask-circle bg-white' src={`${logo}`} alt={`${name}`}/>}
         <h2 className='ml-3 text-2xl'>{name} </h2>
         <h2 className='mt-2 ml-1 text-sm'>{symbol}</h2>

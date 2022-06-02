@@ -30,7 +30,7 @@ function CryptoTableItem() {
                   </td>
                 <td>
                 <Link to={`/crypto/${crypto.id}`}>
-                  <button className="btn" id={crypto.name}>View More</button>
+                  <button className="btn rounded-lg" id={crypto.name}>View More</button>
                 </Link>
                 </td>
             </tr>
