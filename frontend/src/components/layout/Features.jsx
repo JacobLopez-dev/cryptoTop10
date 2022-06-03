@@ -17,7 +17,7 @@ function Features() {
       <div className="flex flex-col lg:flex-row w-full">
       {/* Card 1 */}
       <div className="grid flex-grow h-fit rounded-box place-items-center p-3 text-neutral-content">
-          <div className="card w-8/12 p-3 bg-primary">
+          <div className="card w-8/12 p-3 bg-primary rounded-lg">
             <figure><FaBookReader className='feature-icon'/></figure>
             <div className="card-body">
               <h2 className="card-title">Guides</h2>
@@ -34,7 +34,7 @@ function Features() {
 
         {/* Card 2 */}
         <div className="grid flex-grow h-fit rounded-box place-items-center p-3 text-neutral-content">
-          <div className="card w-8/12 p-3 bg-primary">
+          <div className="card w-8/12 p-3 bg-primary rounded-lg">
             <figure><FaNewspaper className='feature-icon'/></figure>
             <div className="card-body">
               <h2 className="card-title">Latest Updates</h2>

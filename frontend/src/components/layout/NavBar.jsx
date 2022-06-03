@@ -1,9 +1,19 @@
-import {Link} from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import {Link, useNavigate} from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
+import {logout, reset} from '../../features/auth/authSlice'
 import ThemeToggle from '../buttons/ThemeToggle'
 
 function Navbar() {
   const {user} = useSelector((state) => state.auth)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  
+  const onLogout = () => {
+    dispatch(logout())
+    dispatch(reset())
+    navigate('/')
+  }
 
   return (
   <>
@@ -30,6 +40,9 @@ function Navbar() {
             {/* Will eventually lead to user profile */}
             <li>
               <Link to='/profile'>Profile</Link>
+            </li>
+            <li>
+              <button className='btn bg-primary text-white' onClick={onLogout}>Logout</button>
             </li>
           </ul>
         </div>

@@ -47,7 +47,7 @@ function CryptoPage() {
  // End Logs
 
   return (
-    <div className='lg:mb-20'>
+    <div className='lg:mb-20 flex flex-col items-center'>
      <header className='flex items-center bg-primary p-5 rounded-b-3xl text-neutral-content w-full'>
        {logo && <img className='mask mask-circle bg-white' src={`${logo}`} alt={`${name}`}/>}
         <h2 className='ml-3 text-2xl'>{name} </h2>
@@ -55,7 +55,7 @@ function CryptoPage() {
         <h3 className='ml-auto text-2xl'>Rank: {cmc_rank}</h3>
      </header>
 
-     <div className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-6 p-3'>
+     <div className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-6 w-10/12'>
         <Stats marketCap={market_cap} price={price} change={percent_change_24h} volume={volume_24h} volumeChange={volume_change_24h}/>
         <CryptoConverter price={price} symbol={symbol}/>
         <CryptoSocials urls={urls}/>
