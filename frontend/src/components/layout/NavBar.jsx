@@ -1,6 +1,7 @@
 import {Link, useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {logout, reset} from '../../features/auth/authSlice'
+import Particle from './Particle'
 import ThemeToggle from '../buttons/ThemeToggle'
 
 function Navbar() {

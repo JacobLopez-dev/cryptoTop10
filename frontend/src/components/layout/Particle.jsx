@@ -1,7 +1,7 @@
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
-function Particle() {
+function Particle({height}) {
 
     const particlesInit = async (main) => {
         // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
@@ -19,6 +19,7 @@ function Particle() {
       id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
+      height={height}
       options={
         {
           fullScreen: {
@@ -105,7 +106,7 @@ function Particle() {
                 speed: 2
               },
               repulse: {
-                distance: 200
+                distance: 175
               },
               push: {
                 particles_nb: 4

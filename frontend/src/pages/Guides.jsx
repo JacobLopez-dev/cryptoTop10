@@ -1,23 +1,33 @@
 // See sundae swap https://help.sundaeswap.finance/en/
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import {FaBook, FaPenSquare} from 'react-icons/fa'
 import {useSelector, useDispatch} from 'react-redux'
+import {getGuides, resetGuides} from '../features/guides/guidesSlice'
+import GuideList from '../components/guides/GuideList'
+
 function Guides() {
 
-//   const dispatch = useDispatch()
-  
-//   useEffect(() => {
-//     return () => {
-//             dispatch(reset())
-//         console.log('Crypto Page Reset')
-//     }
-// }, [])
-
-const dispatch = useDispatch()
-const navigate = useNavigate()
-
 const {user} = useSelector(state => state.auth)
+const {guides, isLoading, isSuccess} = useSelector((state) => state.guides)
+const dispatch = useDispatch()
+
+
+useEffect(() => {
+  return () => {
+      if(isSuccess) {
+          dispatch(resetGuides())
+      }
+      console.log('guide page reset')
+  }
+}, [dispatch, isSuccess])
+
+useEffect(() => {
+  dispatch(getGuides())
+  console.log('Guide page get dispatch')
+}, [dispatch])
+
+console.log(guides)
 
   return (
     <div className="h-screen">
@@ -34,7 +44,7 @@ const {user} = useSelector(state => state.auth)
         </Link>}
       </header>
           {/* guides */}
-          <div className="border-2">Guides</div>
+          <GuideList/>
    </div>
   )
 }

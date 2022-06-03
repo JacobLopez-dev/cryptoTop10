@@ -18,7 +18,9 @@ app.get('/', (req,res) => {
 })
 
 app.use('/api', require('./routes/cryptoRoute'))
+app.use('/api/guides', require('./routes/guideRoute'))
 app.use('/api/users', require('./routes/userRoutes'))
+
 
 app.use(errorHandler)
 

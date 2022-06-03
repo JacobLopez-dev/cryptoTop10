@@ -6,6 +6,8 @@ import Stats from '../components/cryptos/Stats'
 import CryptoConverter from '../components/cryptos/CryptoConverter'
 import CryptoSocials from '../components/cryptos/CryptoSocials'
 import cryptoFlatten from '../utils/flattenObject'
+import Particle from "../components/layout/Particle"
+
 
 function CryptoPage() {
     const { isSuccess, singleCrypto, cryptos} = useSelector((state) => state.cryptos)
@@ -49,6 +51,7 @@ function CryptoPage() {
   return (
     <div className='lg:mb-20 flex flex-col items-center'>
      <header className='flex items-center bg-primary p-5 rounded-b-3xl text-neutral-content w-full'>
+     <Particle height={'66%'}/>
        {logo && <img className='mask mask-circle bg-white' src={`${logo}`} alt={`${name}`}/>}
         <h2 className='ml-3 text-2xl'>{name} </h2>
         <h2 className='mt-2 ml-1 text-sm'>{symbol}</h2>
