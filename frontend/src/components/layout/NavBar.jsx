@@ -30,7 +30,7 @@ function Navbar() {
       <div className="ml-auto">
       {user && 
         <div className="dropdown">
-          <label tabIndex="0" className='btn m-4'>{`Hello, ${user.name}`}</label>
+          <label tabIndex="0" className='btn m-4 rounded-lg'>{`Hello, ${user.name}`}</label>
           <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
             {user.isAdmin && <li>
               <Link to='/admin-dashboard'>Admin Dashboard</Link>

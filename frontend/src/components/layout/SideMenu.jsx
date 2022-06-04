@@ -1,18 +1,6 @@
-import {Link, useNavigate} from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import {logout, reset} from '../../features/auth/authSlice'
+import {Link} from 'react-router-dom'
 
 function SideMenu({toggleMenu}) {
-
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const {user} = useSelector(state => state.auth)
-
-  const onLogout = () => {
-    dispatch(logout())
-    dispatch(reset())
-    navigate('/')
-  }
 
   return (
     <div className="drawer-side">
@@ -35,10 +23,6 @@ function SideMenu({toggleMenu}) {
 
         <li className='m-1' onClick={toggleMenu}>
             <Link to="/news" className='text-2xl hover:text-white'>News</Link>
-        </li>
-
-        <li className='mt-auto'>
-        {user !== null && <button className='btn bg-primary text-white' onClick={onLogout}>Logout</button>}
         </li>
       </ul>
       
