@@ -3,7 +3,7 @@ const router = express.Router()
 const {getGuides, getGuide, createGuide, deleteGuide, updateGuide} = require('../controllers/guideController')
 const {protect} = require('../middleware/authMiddleware')
 
-router.route('/').post(createGuide)
+router.route('/').post(protect, createGuide)
 
 router.route('/all-guides').get(getGuides)
 
