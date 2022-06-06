@@ -16,7 +16,13 @@ const getGuides = asynchHandler(async(req, res) => {
 // @route       GET /api/guides/:slug
 // @access      Public
 const getGuide = asynchHandler(async(req, res) => {
-    // const guide = await Guide.findById(req.params.id)
+    const guide = await Guide.findOne({slug: req.params.slug})
+
+    if(!guide){
+        res.status(404)
+        throw new Error('Guide not found')
+    }
+
     res.status(200).json(guide)
 })
 
@@ -49,25 +55,20 @@ const createGuide = asynchHandler(async(req, res) => {
     res.status(201).json(guide)
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // @description delete guide
 // @route       DELETE /api/guides/:slug
 // @access      Private
 const deleteGuide = asynchHandler(async(req, res) => {
-    console.log('delete guide')
+    const guide = await Guide.findOne({slug: req.params.slug})
+
+    if(!guide){
+        res.status(404)
+        throw new Error('Guide not found')
+    }
+
+    await guide.remove()
+    
+    res.status(200).json({success: true})
 })
 
 // @description get guides

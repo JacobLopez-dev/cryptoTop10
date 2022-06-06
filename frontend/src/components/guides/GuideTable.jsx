@@ -1,9 +1,30 @@
 import React from 'react'
 import GuideTableItem from './GuideTableItem'
+import {useSelector, useDispatch} from 'react-redux'
+import {toast} from 'react-toastify'
+import { deleteGuide, getGuides } from '../../features/guides/guidesSlice'
 
-function GuideTable() {
+function GuideTable({guides}) {
+  const {isError, message, isSuccess} = useSelector((state) => state.guides)
+
+  const dispatch = useDispatch()
+
+  const deleteSelectedGuide = (slug) => {
+    guides.filter(guide => guide.slug === slug)
+
+    dispatch(deleteGuide(slug))
+
+    if(isSuccess){
+        toast.info(slug+'deleted') 
+    }
+
+    if(isError){
+        toast.error(message)
+    }
+}
+
   return (
-    <div className="overflow-x-auto w-10/12 grid mt-20">
+    <div className="overflow-x-auto grid">
     <table className="table">
         <thead>
           <tr>
@@ -14,7 +35,9 @@ function GuideTable() {
           </tr>
         </thead>
         <tbody>
-        <GuideTableItem/>
+        {
+          guides.map(guide => <GuideTableItem key={guide._id} guide={guide} deleteSelectedGuide={deleteSelectedGuide}/>)
+        }
       </tbody>
       </table>
     </div>

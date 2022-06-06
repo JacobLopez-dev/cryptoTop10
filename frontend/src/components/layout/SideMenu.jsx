@@ -13,15 +13,15 @@ function SideMenu({toggleMenu}) {
           </div>
         </li>
 
-        <li className='m-1' onClick={toggleMenu}>
+        <li className='m-1 hover-bordered' onClick={toggleMenu}>
         <Link to="/" className='text-2xl hover:text-white'>Home</Link>
         </li>
 
-        <li className='m-1' onClick={toggleMenu}>
+        <li className='m-1 hover-bordered' onClick={toggleMenu}>
             <Link to="/guides" className='text-2xl hover:text-white'>Guides</Link>
         </li>
 
-        <li className='m-1' onClick={toggleMenu}>
+        <li className='m-1 hover-bordered' onClick={toggleMenu}>
             <Link to="/news" className='text-2xl hover:text-white'>News</Link>
         </li>
       </ul>

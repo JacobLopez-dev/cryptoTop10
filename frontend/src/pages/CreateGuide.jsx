@@ -58,13 +58,13 @@ function CreateGuide() {
             <div className="form-control">
               <label className="input-group input-group-vertical">
                 <span className='bg-secondary text-white'>Description</span>
-                <input type="text" placeholder="Enter your email" className="input focus:border-secondary w-full input-bordered" id='description' name='description' value={description} onChange={(e) => setDescription(e.target.value)} required/>
+                <input type="text" placeholder="Enter description" className="input focus:border-secondary w-full input-bordered" id='description' name='description' value={description} onChange={(e) => setDescription(e.target.value)} required/>
               </label>
             </div>
             <div className="form-control">
               <label className="input-group input-group-vertical">
                 <span className='bg-secondary text-white'>Guide</span>
-                <textarea placeholder="Write your duide" className="input focus:border-secondary w-full input-bordered" id='markdown' name='markdown' value={markdown} onChange={(e) => setMarkdown(e.target.value)} required> </textarea>
+                <textarea placeholder="Write your guide" className="input focus:border-secondary w-full input-bordered" id='markdown' name='markdown' value={markdown} onChange={(e) => setMarkdown(e.target.value)} required> </textarea>
               </label>
             </div>
             <div className="card-actions flex justify-center">

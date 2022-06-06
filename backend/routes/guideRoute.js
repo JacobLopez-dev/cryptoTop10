@@ -7,9 +7,9 @@ router.route('/').post(protect, createGuide)
 
 router.route('/all-guides').get(getGuides)
 
-router.route('/:id')
+router.route('/:slug')
     .get(getGuide)
-    .delete(protect,deleteGuide)
+    .delete(deleteGuide)
     .put(protect, updateGuide)
 
 module.exports = router

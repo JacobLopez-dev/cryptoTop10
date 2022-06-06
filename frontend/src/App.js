@@ -12,6 +12,7 @@ import Register from './pages/Register'
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 import CreateGuide from './pages/CreateGuide';
+import Guide from './pages/Guide';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/layout/ScrollToTop';
 import { ToastContainer } from 'react-toastify';
@@ -48,6 +49,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/guides" element={<Guides/>}/>
+        <Route path="/guide/:slug" element={<Guide/>}/>
         <Route path="/news" element={<News/>}/>
         <Route path='/crypto/:cryptoID' element={<CryptoPage />} />
         {/* Only accessible by logged in users */}

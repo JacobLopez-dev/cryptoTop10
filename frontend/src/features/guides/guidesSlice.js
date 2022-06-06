@@ -15,6 +15,7 @@ export const createGuide = createAsyncThunk('guides/create',
   async(guideData, thunkApi) => {
     try {
       const token = thunkApi.getState().auth.user.token
+      // Pass {title, desc, and markdown + user token to associate it as the author}
       return await guidesService.createGuide(guideData, token)
     } catch (error) {
       const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
@@ -34,6 +35,29 @@ export const getGuides = createAsyncThunk('guides/get',
       return thunkApi.rejectWithValue(message)
     }
 })
+
+// Get single guide
+export const getGuide = createAsyncThunk('guide/get', 
+  async(slug, thunkApi) => {
+    try {
+      return await guidesService.getGuide(slug)
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+      return thunkApi.rejectWithValue(message)
+    }
+  }
+)
+
+export const deleteGuide = createAsyncThunk('guide/delete', 
+  async (slug, thunkApi) => {
+    try {
+      return await guidesService.deleteGuide(slug)
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+      return thunkApi.rejectWithValue(message)      
+    }
+  }
+)
 
 export const guideSlice = createSlice({
     name: 'guide',
@@ -55,7 +79,6 @@ export const guideSlice = createSlice({
         state.isError = true
         state.message = action.payload
       })
-
       .addCase(getGuides.pending, (state) => {
         state.isLoading = true
       })
@@ -65,6 +88,32 @@ export const guideSlice = createSlice({
         state.guides = action.payload
       })
       .addCase(getGuides.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(getGuide.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(getGuide.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.guide = action.payload
+      })
+      .addCase(getGuide.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(deleteGuide.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(deleteGuide.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.guides.filter(guide => guide.slug === action.payload.slug) 
+      })
+      .addCase(deleteGuide.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload
