@@ -1,5 +1,10 @@
 const mongoose = require('mongoose')
 const slugify = require('slugify')
+const marked = require('marked')
+const sanitizedHtml = require('sanitize-html')
+// const createDomPurify = require('dompurify')
+// const {JSDOM} = require('jsdom')
+// const domPurify = createDomPurify(new JSDOM().window)
 mongoose.set('debug', true);
 
 const guideSchema = mongoose.Schema({
@@ -23,7 +28,12 @@ const guideSchema = mongoose.Schema({
     },
     markdown: {
         type: String, 
-        required: [true]
+        required: [true],
+        trim: true
+    },
+    sanitizedHtml: {
+        type: String,
+        required: true
     }
 },
 {
@@ -33,6 +43,11 @@ const guideSchema = mongoose.Schema({
 guideSchema.pre('validate', function(next){
     if(this.title){
         this.slug = slugify(this.title, {lower: true, strict: true})
+    }
+
+    if(this.markdown){
+        this.sanitizedHtml = sanitizedHtml(marked.parse(this.markdown))
+        // this.sanitizedHtml = domPurify.sanitize(marked.parse(this.markdown))
     }
     next()
 })

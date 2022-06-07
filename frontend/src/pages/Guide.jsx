@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react'
 import {useParams, useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import Spinner from '../components/Spinner'
+import DOMPurify from 'dompurify'
 import {getGuide, resetGuides} from '../features/guides/guidesSlice'
 
 function Guide() {
@@ -36,6 +37,16 @@ if(isError){
       <h1>
         {guide.title}
       </h1>
+      <>
+        {guide.markdown}
+        <br/>
+        <br/>
+        <div
+          dangerouslySetInnerHTML={{
+                __html:
+                guide.sanitizedHtml
+          }}/>
+      </>
     </div>
   )
 }
