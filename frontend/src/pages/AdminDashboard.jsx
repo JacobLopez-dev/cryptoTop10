@@ -9,10 +9,18 @@ function AdminDashboard() {
   const {guides, isLoading, isSuccess} = useSelector((state) => state.guides)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    return () => {
+        if(isSuccess) {
+            dispatch(resetGuides())
+        }
+        console.log('admin guide reset')
+    }
+  }, [dispatch, isSuccess])
 
   useEffect(() => {
     dispatch(getGuides())
-    console.log('Guide page get dispatch')
+    console.log('Admin Guides dispatch')
   }, [dispatch])
   
   return (
