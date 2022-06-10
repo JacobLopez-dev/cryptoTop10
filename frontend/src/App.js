@@ -9,8 +9,10 @@ import CryptoPage from './pages/CryptoPage';
 import AdminDashboard from './pages/AdminDashboard'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import PrivateRoute from './components/PrivateRoute';
-import AdminRoute from './components/AdminRoute';
+
+import PrivateRoute from './features/auth/routes/PrivateRoute';
+import AdminRoute from './features/auth/routes/AdminRoute';
+
 import CreateGuide from './pages/CreateGuide';
 import Guide from './pages/Guide';
 import Footer from './components/layout/Footer';
@@ -45,7 +47,7 @@ function App() {
     <input id="my-drawer-3" type="checkbox" className="drawer-toggle" onClick={(e)=>toggleMenu(e)}/> 
       <div className="drawer-content flex flex-col justify-between ">
       <NavBar/>
-      <main className="w-full relative mx-auto lg:h-fit">
+      <main className="w-full relative h-fit">
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/guides" element={<Guides/>}/>

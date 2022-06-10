@@ -5,7 +5,7 @@ const sanitizedHtml = require('sanitize-html')
 // const createDomPurify = require('dompurify')
 // const {JSDOM} = require('jsdom')
 // const domPurify = createDomPurify(new JSDOM().window)
-mongoose.set('debug', true);
+// mongoose.set('debug', true);
 
 const guideSchema = mongoose.Schema({
     author: {
@@ -34,7 +34,11 @@ const guideSchema = mongoose.Schema({
     sanitizedHtml: {
         type: String,
         required: true
-    }
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
 },
 {
     timestamps: true,

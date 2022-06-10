@@ -1,18 +1,16 @@
 import {useSelector, useDispatch} from 'react-redux'
-import {useEffect, useState} from 'react'
-import {useParams, useNavigate} from 'react-router-dom'
+import {useEffect} from 'react'
+import {useParams} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import Spinner from '../components/Spinner'
-import DOMPurify from 'dompurify'
+// import DOMPurify from 'dompurify'
 import {getGuide, resetGuides} from '../features/guides/guidesSlice'
 
 function Guide() {
 
-  const {guide, isLoading, isSuccess, isError, message} = useSelector((state) => state.guides)
+  const {guide, isLoading, isError, message} = useSelector((state) => state.guides)
 
-  const params = useParams()
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const {slug} = useParams()
 
   useEffect(() => {
@@ -21,7 +19,7 @@ function Guide() {
     }
     dispatch(getGuide(slug))
     dispatch(resetGuides())
-},[isError, message, slug])
+},[isError, message, slug, dispatch])
 
 if(isLoading){
   return <Spinner/>
@@ -33,11 +31,19 @@ if(isError){
 
 
   return (
-    <div>
-      <h1>
-        {guide.title}
-      </h1>
-      <>
+    <section className='flex flex-col w-10/12 m-auto h-screen p-5 text-neutral'>
+    
+    <div className="flex flex-col h-fit break-normal p-3 bg-neutral-content">
+      <div className="flex items-center justify-between mb-4">
+        <h1 className='text-3xl'>
+          {guide.title}
+        </h1>
+        <h3 className='text-xs'>Written by <br/>{guide.author}</h3>
+      </div>
+      <p>This is a very long description for this guide.  This is a very long description for this guide. This is a verm This is a very long description for this guide.  This is a very long description for this guide. This is a verm    This is a very long description for this guide.  This is a very long description for this guide. This is a verm This is a very long description for this guide.</p>
+    </div>
+    <div className="h-full overflow-scroll p-4 bg-neutral-content boreder-2">
+      <div className="divider"></div>
         {guide.markdown}
         <br/>
         <br/>
@@ -46,8 +52,8 @@ if(isError){
                 __html:
                 guide.sanitizedHtml
           }}/>
-      </>
-    </div>
+      </div>
+    </section>
   )
 }
 

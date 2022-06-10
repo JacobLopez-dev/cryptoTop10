@@ -1,7 +1,7 @@
 import {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { getTopCryptos, reset} from '../features/topCryptos/topCryptosSlice'
-import { getGuides, resetGuides } from '../features/guides/guidesSlice'
+// import { getGuides, resetGuides } from '../features/guides/guidesSlice'
 import CryptoTable from '../components/cryptos/CryptoTable'
 import Hero from '../components/layout/Hero'
 import Features from '../components/layout/Features'
@@ -30,7 +30,7 @@ function Home() {
 
   return (
    <>
-    <Hero/>
+    <Hero title={'Welcome'} description={'This is crypto top 10'}/>
     <CryptoTable/>
     <div className="divider"></div>
     <Features/>

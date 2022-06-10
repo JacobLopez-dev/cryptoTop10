@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getGuides, resetGuides} from '../features/guides/guidesSlice'
 import GuideTable from '../components/guides/GuideTable'
+import Spinner from '../components/Spinner'
 
 function AdminDashboard() {
 
@@ -23,6 +24,12 @@ function AdminDashboard() {
     console.log('Admin Guides dispatch')
   }, [dispatch])
   
+  if(isLoading){
+    return (
+      <Spinner/>
+    )
+  }
+
   return (
     <>
     <div className='flex flex-col items-center h-screen'>

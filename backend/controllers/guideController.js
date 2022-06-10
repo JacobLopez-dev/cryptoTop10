@@ -7,7 +7,9 @@ const Guide = require('../models/guideModel');
 // @route       GET /api/guides
 // @access      Public
 const getGuides = asynchHandler(async(req, res) => {
-    const guides = await Guide.find()
+    const guides = await Guide.find().sort({
+        createdAt: 'desc'
+    })
     res.status(200).json(guides)
 })
 

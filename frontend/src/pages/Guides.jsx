@@ -1,14 +1,13 @@
 // See sundae swap https://help.sundaeswap.finance/en/
 import { useEffect } from 'react'
-import {Link, useNavigate} from 'react-router-dom'
-import {FaBook, FaPenSquare} from 'react-icons/fa'
 import {useSelector, useDispatch} from 'react-redux'
 import {getGuides, resetGuides} from '../features/guides/guidesSlice'
 import GuideList from '../components/guides/GuideList'
+import Spinner from '../components/Spinner'
+import Hero from '../components/layout/Hero'
 
 function Guides() {
 
-const {user} = useSelector(state => state.auth)
 const {guides, isLoading, isSuccess} = useSelector((state) => state.guides)
 const dispatch = useDispatch()
 
@@ -29,22 +28,15 @@ useEffect(() => {
 
 console.log(guides)
 
+if(isLoading){
+  return <Spinner/>
+}
   return (
-    <div className="h-screen">
-      <header className='flex items-center bg-primary text-neutral-content p-5 rounded-b-3xl w-full'>
-        <h2 className='ml-3 text-2xl flex items-center'>
-          Crypto Guides 
-          <FaBook className='ml-3'/>
-        </h2>
-        {user !== null && 
-        <Link className='ml-auto flex items-center hover:text-white' to='/new-guide'>
-          <div className="tooltip tooltip-accent tooltip-bottom mr-2" data-tip="new guide">
-            <FaPenSquare className='text-4xl'/> 
-          </div>
-        </Link>}
-      </header>
-          {/* guides */}
-          <GuideList/>
+    <div className="h-fit">
+      <Hero title={'Crypto Guides'} description={'Here you will find the most useful guides on the internet for getting started on your quest for crypto knowledge.'}/>
+      <section className='w-full h-full grid lg:grid-cols-3 md:grid-cols-2 place-items-center gap-6 mt-5'>
+        <GuideList/>
+      </section>
    </div>
   )
 }

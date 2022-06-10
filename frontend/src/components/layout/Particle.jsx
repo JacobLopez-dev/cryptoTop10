@@ -31,7 +31,7 @@ function Particle({height}) {
               value: 60,
             density: {
               enable: true,
-              value_area: 800
+              value_area: 1000
             }
             },
             color: {
@@ -87,32 +87,20 @@ function Particle({height}) {
             events: {
               onhover: {
               enable: true,
-              mode: "repulse"
+              mode: "grab"
+              },
+              onclick: {
+                enable: true,
+                mode:'push'
               },
               resize: true
             },
             modes: {
               grab: {
-                distance: 400,
+                distance: 200,
                 line_linked: {
                   opacity: 1
                 }
-              },
-              bubble: {
-                distance: 100,
-                size: 40,
-                duration: 2,
-                opacity: 0.8,
-                speed: 2
-              },
-              repulse: {
-                distance: 175
-              },
-              push: {
-                particles_nb: 4
-              },
-              remove: {
-                particles_nb: 2
               }
             }
           },
