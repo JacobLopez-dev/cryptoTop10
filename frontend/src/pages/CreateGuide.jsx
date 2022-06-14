@@ -74,7 +74,7 @@ function CreateGuide() {
                 <span className='bg-secondary text-white'>Guide</span>
                 <CKEditor
                     editor={Editor}
-                    data="<p>Hello from CKEditor 5!</p>"
+                    data={markdown}
                     onChange={handleEditorChange}
                 />
               </label>
