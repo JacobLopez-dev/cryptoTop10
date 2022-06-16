@@ -3,7 +3,6 @@ import {useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import Spinner from '../components/Spinner'
-// import DOMPurify from 'dompurify'
 import {getGuide, resetGuides} from '../features/guides/guidesSlice'
 
 function Guide() {
@@ -41,7 +40,7 @@ if(isError){
 
 
   return (
-    <section className='flex flex-col w-10/12 m-auto h-screen p-5 text-neutral'>
+    <section className='flex flex-col w-10/12 m-auto h-fit p-5 text-neutral'>
     {/* Heading */}
     <div className="flex flex-col h-fit break-normal p-3 bg-neutral-content">
     {/* image below */}
@@ -59,12 +58,14 @@ if(isError){
     </div>
 
     {/* Markdown */}
-    <div className="h-full overflow-scroll p-4 bg-neutral-content boreder-2">
+    <div className="p-10 bg-neutral-content boreder-2">
       <div className="divider"></div>
-        {guide.markdown}
+        {/* {guide.markdown} */}
+        {/* {guide.sanitizedHtml} */}
         <br/>
         <br/>
-        <div
+
+        <div className='guideContent'
           dangerouslySetInnerHTML={{
                 __html:
                 guide.sanitizedHtml

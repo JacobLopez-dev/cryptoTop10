@@ -1,11 +1,7 @@
 const mongoose = require('mongoose')
 const slugify = require('slugify')
-const marked = require('marked')
 const sanitizedHtml = require('sanitize-html')
-// const createDomPurify = require('dompurify')
-// const {JSDOM} = require('jsdom')
-// const domPurify = createDomPurify(new JSDOM().window)
-// mongoose.set('debug', true);
+
 
 const guideSchema = mongoose.Schema({
     author: {
@@ -50,8 +46,30 @@ guideSchema.pre('validate', function(next){
     }
 
     if(this.markdown){
-        this.sanitizedHtml = sanitizedHtml(marked.parse(this.markdown))
-        // this.sanitizedHtml = domPurify.sanitize(marked.parse(this.markdown))
+        this.sanitizedHtml = sanitizedHtml(this.markdown, {
+            allowedAttributes: {
+                '*': ["style"]
+              },
+            allowedStyles: {
+                '*': {
+                  // Match HEX and RGB
+                  'color': [/^#(0x)?[0-9a-f]+$/i, /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/],
+                  'text-align': [/^left$/, /^right$/, /^center$/],
+                  // Match any number with px, em, or %
+                  'font-size': [/^\d+(?:px|em|%)$/],
+                  'border-collapse': [/^separate$/, /^collapse$/],
+                  'width': [/^\d*(\.\d+)(?:px|em|%)$/, /^\d+(?:px|em|%)$/],
+                  'height': [/^\d*(\.\d+)(?:px|em|%)$/, /^\d+(?:px|em|%)$/],
+                  'border': [/^\d+(?:px|em|%)$/],
+                  'border-style': [/^none$/, /^dotted$/, /^groove$/,/^double$/, /^solid$/],
+                  'border-width': [/^\d+(?:px|em|%)$/],
+                  'border-color': [/^#(0x)?[0-9a-f]+$/i, /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/],
+                  'margin': [/^\d+(?:px|em|%)$/],
+                  'margin': [/^auto$/, /^initial$/,/^inherit$/],
+
+                }
+              }
+        })
     }
     next()
 })

@@ -7,10 +7,8 @@ function SideMenu({toggleMenu}) {
       <label htmlFor="my-drawer-3" className="drawer-overlay"></label> 
       <ul className="menu p-4 overflow-y-auto w-56 lg:w-2/12 bg-secondary text-neutral-content">
         {/* <!-- Sidebar content here --> */}
-        <li>
-          <div className="flex-1 px-2 mx-2 lg:hidden">
+        <li onClick={toggleMenu}>
             <Link to='/' className="btn btn-ghost normal-case text-2xl text-primary px-2 mx-2">Crypto Top 10</Link>
-          </div>
         </li>
 
         <li className='m-1 hover-bordered' onClick={toggleMenu}>

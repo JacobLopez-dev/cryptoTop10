@@ -53,10 +53,7 @@ function CreateGuide() {
       <header className='flex items-center bg-primary p-5 rounded-b-3xl text-neutral-content w-full absolute inset-x-0'>
         <h2 className='ml-3 text-2xl'>New Guide</h2>
       </header>    
-      <div className="card flex flex-col items-center bg-primary rounded-lg shadow-xl mt-80 w-full lg:w-8/12 p-3 border-2">
-
-        <div className="card-body  min-w-full items-center overflow-scroll text-center">
-          <form className='flex flex-col lg:w-10/12 md:w-10/12 w-full gap-10 p-3' onSubmit={onSubmit}>
+          <form className='flex flex-col lg:w-10/12 md:w-10/12 w-full gap-10 p-3 mt-20' onSubmit={onSubmit}>
             <div className="form-control">
               <label className="input-group input-group-vertical">
                 <span className='bg-secondary text-white'>title</span>
@@ -88,15 +85,14 @@ function CreateGuide() {
                       'removeformat | help',
                   }}
                   onEditorChange={handleEditorChange}
+                  value={markdown}
                 />
               </label>
             </div>
             <div className="card-actions flex justify-center">
-              <button className="btn rounded-lg">Post</button>
+              <button className="btn btn-primary rounded-lg">Post</button>
             </div>
           </form>
-        </div>
-      </div>
     </div>
   )
 }
