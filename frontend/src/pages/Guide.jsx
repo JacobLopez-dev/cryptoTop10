@@ -54,7 +54,7 @@ if(isError){
         <h3 className='text-xs'>Written by <br/>{guide.author}</h3>
       </div>
       <p>
-        <i>This is a very long description for this guide.  This is a very long description for this guide. This is a verm This is a very long description for this guide.  This is a very long description for this guide. This is a verm    This is a very long description for this guide.  This is a very long description for this guide. This is a verm This is a very long description for this guide.</i>
+        <i>{guide.description}</i>
       </p>
     </div>
 

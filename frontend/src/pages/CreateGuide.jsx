@@ -1,8 +1,9 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useRef} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {Link, useNavigate} from 'react-router-dom' 
 import {toast} from 'react-toastify'
 import { createGuide, resetGuides } from '../features/guides/guidesSlice'
+import { Editor } from '@tinymce/tinymce-react';
 import Spinner from '../components/Spinner'
 
 
@@ -14,6 +15,7 @@ function CreateGuide() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [markdown, setMarkdown] = useState('')
+  const editorRef = useRef(null);
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -31,10 +33,10 @@ function CreateGuide() {
       dispatch(resetGuides())
   },[dispatch, isError, isSuccess, navigate, message])
 
-  const handleEditorChange = (e, editor) => {
-    const data = editor.getData()
-    console.log({ data });
-    setMarkdown(data)
+  const handleEditorChange = () => {
+    let content = editorRef.current.getContent()
+    console.log(content)
+    setMarkdown(content)
   }
 
   const onSubmit = (e) => {
@@ -71,7 +73,22 @@ function CreateGuide() {
               <label className="input-group input-group-vertical">
                 <span className='bg-secondary text-white'>Guide</span>
                 {/* Editor */}
-                <textarea placeholder="Write your guide" className="input focus:border-secondary w-full input-bordered" id='markdown' name='markdown' value={markdown} onChange={(e) => setMarkdown(e.target.value)} required> </textarea>
+                <Editor
+                  apiKey={process.env.TINY_MCE_API}
+                  onInit={(evt, editor) => editorRef.current = editor}
+                  init={{
+                    plugins: [
+                      'advlist', 'autolink', 'lists', 'link', 'charmap', 'preview',
+                      'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                      'insertdatetime', 'table', 'code', 'help', 'wordcount'
+                    ],
+                    toolbar: 'undo redo | blocks | ' +
+                      'bold italic forecolor | alignleft aligncenter ' +
+                      'alignright alignjustify | bullist numlist outdent indent | ' +
+                      'removeformat | help',
+                  }}
+                  onEditorChange={handleEditorChange}
+                />
               </label>
             </div>
             <div className="card-actions flex justify-center">
