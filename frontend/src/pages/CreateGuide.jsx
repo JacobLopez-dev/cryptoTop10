@@ -4,8 +4,6 @@ import {Link, useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import { createGuide, resetGuides } from '../features/guides/guidesSlice'
 import Spinner from '../components/Spinner'
-import Editor from 'ckeditor5-custom-build/build/ckeditor';
-import { CKEditor } from '@ckeditor/ckeditor5-react'
 
 
 function CreateGuide() {
@@ -72,11 +70,8 @@ function CreateGuide() {
             <div className="form-control">
               <label className="input-group input-group-vertical">
                 <span className='bg-secondary text-white'>Guide</span>
-                <CKEditor
-                    editor={Editor}
-                    data={markdown}
-                    onChange={handleEditorChange}
-                />
+                {/* Editor */}
+                <textarea placeholder="Write your guide" className="input focus:border-secondary w-full input-bordered" id='markdown' name='markdown' value={markdown} onChange={(e) => setMarkdown(e.target.value)} required> </textarea>
               </label>
             </div>
             <div className="card-actions flex justify-center">
