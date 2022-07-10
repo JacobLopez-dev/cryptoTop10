@@ -77,4 +77,3 @@ guideSchema.pre('validate', function(next){
 
 
 module.exports = mongoose.model('Guide', guideSchema, 'guides')
-

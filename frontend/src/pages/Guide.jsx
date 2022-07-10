@@ -42,7 +42,7 @@ if(isError){
   return (
     <section className='flex flex-col w-10/12 m-auto h-fit p-5 text-neutral'>
     {/* Heading */}
-    <div className="flex flex-col h-fit break-normal p-3 bg-neutral-content">
+    <div className="flex flex-col h-fit break-normal p-3 bg-neutral-content rounded-t-xl">
     {/* image below */}
       <div className='h-96 w-full bg-primary rounded-xl mb-4'>content</div>
       
@@ -58,7 +58,7 @@ if(isError){
     </div>
 
     {/* Markdown */}
-    <div className="p-10 bg-neutral-content boreder-2">
+    <div className="p-10 bg-neutral-content boreder-2 rounded-b-xl">
       <div className="divider"></div>
         {/* {guide.markdown} */}
         {/* {guide.sanitizedHtml} */}

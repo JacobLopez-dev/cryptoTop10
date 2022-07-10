@@ -59,6 +59,19 @@ export const deleteGuide = createAsyncThunk('guide/delete',
   }
 )
 
+// Update guide
+export const updateGuide = createAsyncThunk('guides/update',
+  async(guideData, thunkApi) => {
+    try {
+      const token = thunkApi.getState().auth.user.token
+      // Pass {title, desc, and markdown + user token to associate it as the author}
+      return await guidesService.updateGuide(guideData, token)
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+      return thunkApi.rejectWithValue(message)
+    }
+})
+
 export const guideSlice = createSlice({
     name: 'guide',
     initialState,
@@ -118,6 +131,18 @@ export const guideSlice = createSlice({
         state.isError = true
         state.message = action.payload
       })
+      // .addCase(updateGuide.pending, (state) => {
+      //   state.isLoading = true
+      // })
+      // .addCase(updateGuide.fulfilled, (state) => {
+      //   state.isLoading = false
+      //   state.isSuccess = true
+      // })
+      // .addCase(updateGuide.rejected, (state, action) => {
+      //   state.isLoading = false
+      //   state.isError = true
+      //   state.message = action.payload
+      // })
     },
   })
   

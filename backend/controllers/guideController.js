@@ -57,6 +57,39 @@ const createGuide = asynchHandler(async(req, res) => {
     res.status(201).json(guide)
 })
 
+// @description get guides
+// @route       PUT /api/guides/:slug
+// @access      Public
+const updateGuide = asynchHandler(async(req, res) => {
+    // Find guide - if no match return not found
+    const guide = await Guide.findOne({slug: req.params.slug})
+
+    if(!guide){
+        res.status(404)
+        throw new Error('Guide not found')
+    }
+
+    // Ensure user is logged in
+    const user = await User.findById(req.user.id)
+
+    if(!user){
+        res.status(401)
+        throw new Error('User not found')
+    }
+
+    // Check for required request body value
+    const {title, description, markdown, sanitizedHtml} = req.body;
+
+    if(!title || !description || !markdown || !sanitizedHtml){
+        res.status(400)
+        throw new Error('Please fill all fields')
+    }
+
+    const updateGuide = await Guide.findOneAndUpdate({slug: req.params.slug}, req.body, {new: true})
+    res.status(201).json(updateGuide)
+})
+
+
 // @description delete guide
 // @route       DELETE /api/guides/:slug
 // @access      Private
@@ -73,12 +106,6 @@ const deleteGuide = asynchHandler(async(req, res) => {
     res.status(200).json({success: true})
 })
 
-// @description get guides
-// @route       PUT /api/guides/:slug
-// @access      Public
-const updateGuide = asynchHandler(async(req, res) => {
-    console.log(updateGuide)
-})
 
 module.exports = {
      getGuide,

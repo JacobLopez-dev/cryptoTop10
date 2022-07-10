@@ -25,13 +25,13 @@ function Particle({height}) {
           fullScreen: {
           enable: false
           },
-          fpsLimit: 120,
+          fpsLimit: 30,
           particles: {
             number: {
-              value: 60,
+              value: 10,
             density: {
               enable: true,
-              value_area: 1000
+              value_area: 250
             }
             },
             color: {
@@ -45,13 +45,13 @@ function Particle({height}) {
               random: false,
               anim: {
                 enable: false,
-                speed: 2,
+                speed: 1,
                 opacity_min: 0.1,
                 sync: false
               }
             },
             size: {
-              value: 3,
+              value: 2,
               random: true,
               anim: {
                 enable: false,
@@ -70,7 +70,7 @@ function Particle({height}) {
             },
             move: {
               enable: true,
-              speed: 2,
+              speed: 1.5,
               direction: "none",
               random: false,
               straight: false,

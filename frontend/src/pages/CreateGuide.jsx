@@ -49,14 +49,14 @@ function CreateGuide() {
   }
     
   return (
-    <div className='flex flex-col items-center h-screen'>
+    <div className='flex flex-col items-center h-fit'>
       <header className='flex items-center bg-primary p-5 rounded-b-3xl text-neutral-content w-full absolute inset-x-0'>
         <h2 className='ml-3 text-2xl'>New Guide</h2>
       </header>    
-          <form className='flex flex-col lg:w-10/12 md:w-10/12 w-full gap-10 p-3 mt-20' onSubmit={onSubmit}>
+          <form className='flex flex-col lg:w-10/12 md:w-10/12 w-full gap-10 p-3 mt-20 ' onSubmit={onSubmit}>
             <div className="form-control">
               <label className="input-group input-group-vertical">
-                <span className='bg-secondary text-white'>title</span>
+                <span className='bg-secondary text-white'>Title</span>
                 <input type="text" placeholder="Enter Title" className="input focus:border-secondary w-full input-bordered" id='title' name='title' value={title} onChange={(e) => setTitle(e.target.value)} required/>
               </label>
             </div>
