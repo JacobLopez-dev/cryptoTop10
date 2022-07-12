@@ -27,7 +27,6 @@ function CreateGuide() {
 
       if(isSuccess){
           dispatch(resetGuides())
-          navigate('/guides')
       }
 
       dispatch(resetGuides())

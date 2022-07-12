@@ -19,6 +19,7 @@ import Footer from './components/layout/Footer';
 import ScrollToTop from './components/layout/ScrollToTop';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import GuideEdit from './pages/GuideEdit';
 
 
 function App() {
@@ -57,6 +58,9 @@ function App() {
         {/* Only accessible by logged in users */}
         <Route path='/new-guide' element={<PrivateRoute/>}>
           <Route path="/new-guide" element={<CreateGuide/>}/>
+        </Route>
+        <Route path='/guide/:slug/edit' element={<PrivateRoute/>}>
+          <Route path='/guide/:slug/edit' element={<GuideEdit/>}/>
         </Route>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>

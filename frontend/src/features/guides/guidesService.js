@@ -27,29 +27,31 @@ const getGuide = async (guideSlug) => {
 
 // Delete single guide
 const deleteGuide = async (guideSlug) => {
-    const response = await axios.delete(API_URL+`${guideSlug}`)
+    const response = await axios.delete(API_URL+`/${guideSlug}`)
     return response.data
 }
 
 // Update single guide
-// const updateGuide = async (guideData, token) => {
-//     const config = {
-//         headers: {
-//             Authorization: `Bearer ${token}`
-//         }
-//     }
+const updateGuide = async (guideData, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
 
-//     // pass guide data and bearer token for auth
-//     const response = await axios.post(API_URL, guideData, config)
-//     return response.data
-// }
+    console.log(guideData)
+
+    // pass guide data and bearer token for auth
+    const response = await axios.put(API_URL+`${guideData.slug}`, guideData, config)
+    return response.data
+}
 
 const guidesService = {
     createGuide,
     getGuide,
     getGuides,
     deleteGuide,
-    // updateGuide
+    updateGuide
 }
 
 export default guidesService

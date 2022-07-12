@@ -1,9 +1,6 @@
 import React from 'react'
-import {useSelector, useDispatch} from 'react-redux'
 import {FaPencilAlt, FaEye, FaTrash} from 'react-icons/fa'
-import { deleteGuide, getGuides } from '../../features/guides/guidesSlice'
 import { Link } from 'react-router-dom'
-import {toast} from 'react-toastify'
 
 
 
@@ -16,7 +13,9 @@ function GuideTableItem({guide, deleteSelectedGuide}) {
                 <td>{guide.description}</td>
                 <td>
                 <span className='flex gap-3'>
-                    <button className="tooltip tooltip-accent tooltip-bottom mr-2 text-xl" data-tip="Edit"><FaPencilAlt/></button>
+                    <Link to={`/guide/${guide.slug}/edit`}>
+                        <button className="tooltip tooltip-accent tooltip-bottom mr-2 text-xl" data-tip="Edit"><FaPencilAlt/></button>
+                    </Link>
                     <Link to={`/guide/${guide.slug}`}>
                         <button className="tooltip tooltip-accent tooltip-bottom mr-2 text-xl" data-tip="View"><FaEye/></button>
                     </Link>

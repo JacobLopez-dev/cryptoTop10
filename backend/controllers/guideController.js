@@ -78,14 +78,15 @@ const updateGuide = asynchHandler(async(req, res) => {
     }
 
     // Check for required request body value
-    const {title, description, markdown, sanitizedHtml} = req.body;
+    const {title, description, markdown, slug} = req.body;
 
-    if(!title || !description || !markdown || !sanitizedHtml){
+    if(!title || !description || !markdown || !slug){
         res.status(400)
         throw new Error('Please fill all fields')
     }
 
     const updateGuide = await Guide.findOneAndUpdate({slug: req.params.slug}, req.body, {new: true})
+    await updateGuide.save()
     res.status(201).json(updateGuide)
 })
 

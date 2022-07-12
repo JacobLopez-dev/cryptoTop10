@@ -16,7 +16,7 @@ const guideSchema = mongoose.Schema({
     slug: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     description: {
         type: String,
@@ -37,14 +37,15 @@ const guideSchema = mongoose.Schema({
     },
 },
 {
-    timestamps: true,
+    timestamps: true, 
 })
 
 guideSchema.pre('validate', function(next){
+    // Check for title - slugify it and set as slug
     if(this.title){
         this.slug = slugify(this.title, {lower: true, strict: true})
     }
-
+    // Check for markdown - if available - sanitize it
     if(this.markdown){
         this.sanitizedHtml = sanitizedHtml(this.markdown, {
             allowedAttributes: {
@@ -71,9 +72,9 @@ guideSchema.pre('validate', function(next){
               }
         })
     }
+
+    // Call new middleware
     next()
 })
-
-
 
 module.exports = mongoose.model('Guide', guideSchema, 'guides')

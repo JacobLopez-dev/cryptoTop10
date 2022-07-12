@@ -25,7 +25,7 @@ useEffect(() => {
       if(isSuccess) {
           dispatch(resetGuides())
       }
-      console.log('admin guide reset')
+      console.log('guides reset')
   }
 }, [dispatch, isSuccess])
 
@@ -59,12 +59,8 @@ if(isError){
 
     {/* Markdown */}
     <div className="p-10 bg-neutral-content boreder-2 rounded-b-xl">
-      <div className="divider"></div>
-        {/* {guide.markdown} */}
-        {/* {guide.sanitizedHtml} */}
-        <br/>
-        <br/>
-
+      <hr className="border-t border-secondary p-2" />
+      
         <div className='guideContent'
           dangerouslySetInnerHTML={{
                 __html:
