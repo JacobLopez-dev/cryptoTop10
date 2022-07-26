@@ -27,7 +27,7 @@ function Navbar() {
         <Link to='/' className="btn btn-ghost normal-case text-2xl text-primary px-2 mx-2">Crypto Top 10</Link>
       </div>
       <div className="ml-auto">
-      {user && 
+      {user ?
         <div className="dropdown">
           <label tabIndex="0" className='btn m-4 rounded-lg'>{`Hello, ${user.name}`}</label>
           <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
@@ -46,7 +46,20 @@ function Navbar() {
             </li>
           </ul>
         </div>
+        :
+        <div className='dropdown'>
+          <label tabIndex="0" className='btn m-4 rounded-lg'>Welcome</label>
+          <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+              <Link to='/login'>Login</Link>
+            </li>
+            <li>
+              <Link to='/register'>Register</Link>
+            </li>
+          </ul>
+        </div>
       }
+
       <ThemeToggle/>
       </div>
     </nav>
