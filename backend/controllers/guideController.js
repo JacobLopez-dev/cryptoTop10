@@ -90,6 +90,7 @@ const createGuide = asynchHandler(async(req, res) => {
             coverImage: req.file.location
         })
         res.status(201).json(guide)
+        console.log(guide)
     })
 })
 
