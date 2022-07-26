@@ -16,10 +16,6 @@ app.use(express.urlencoded({extended: false}))
 app.use(cors())
 
 
-app.get('/', (req,res) => {
-    res.status(201).json({message: 'Welcome'})
-})
-
 app.use('/api', require('./routes/cryptoRoute'))
 app.use('/api/guides', require('./routes/guideRoute'))
 app.use('/api/users', require('./routes/userRoutes'))
