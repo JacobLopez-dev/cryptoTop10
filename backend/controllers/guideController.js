@@ -1,7 +1,31 @@
-const asynchHandler = require('express-async-handler');
+const aws = require('aws-sdk');
+const multer = require('multer');
+const multerS3 = require('multer-s3')
 
+const asynchHandler = require('express-async-handler');
 const User = require('../models/userModel')
 const Guide = require('../models/guideModel');
+
+const s3 = new aws.S3({
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_BUCKET_REGION
+})
+
+// upload to aws s3
+const upload = (bucketName) =>
+  multer({
+    storage: multerS3({
+      s3,
+      bucket: bucketName,
+      metadata: function (req, file, cb) {
+        cb(null, { fieldName: file.fieldname });
+      },
+      key: function (req, file, cb) {
+        cb(null, `image-${req.body.title}`);
+      },
+    }),
+  });
 
 // @description get guides
 // @route       GET /api/guides
@@ -32,29 +56,41 @@ const getGuide = asynchHandler(async(req, res) => {
 // @description post guide
 // @route       POST /api/guides
 // @access      Private
+
+
+// Upload file, then create the new guide with the req.file.location that was created (the amazon s3 link)
 const createGuide = asynchHandler(async(req, res) => {
 
-    const {title, description, markdown} = req.body
-    if(!title || !description || !markdown){
-        res.status(400)
-        throw new Error('Please fill all fields')
-    }
+    const uploadSingle = upload('ttc-guide-images').single('coverImage');
 
-    const user = await User.findById(req.user.id)
+    uploadSingle(req, res, async (err) => {
+        if(err) return res.status(400).json({success: false, message: err.message})
 
-    if(!user){
-        res.status(401)
-        throw new Error('User not found')
-    }
+        // // Check for required fields
+        const {title, description, markdown} = req.body;
+        // const {location} = req.file;
+        if(!title || !description || !markdown){
+            res.status(400)
+            throw new Error('Please fill all fields')
+        }
 
-    const guide = await Guide.create({
-        author: req.user.id,
-        title, 
-        description,
-        markdown
+        const user = await User.findById(req.user.id)
+
+        if(!user){
+            res.status(401)
+            throw new Error('User not found')
+        }
+
+        const guide = await Guide.create({
+            author: req.user.id,
+            title, 
+            description,
+            markdown,
+            authorName: user.name,
+            coverImage: req.file.location
+        })
+        res.status(201).json(guide)
     })
-    
-    res.status(201).json(guide)
 })
 
 // @description get guides

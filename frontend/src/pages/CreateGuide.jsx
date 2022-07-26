@@ -15,6 +15,8 @@ function CreateGuide() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [markdown, setMarkdown] = useState('')
+  const [coverImage, setCoverImage] = useState('')
+
   const editorRef = useRef(null);
 
     const dispatch = useDispatch()
@@ -27,10 +29,12 @@ function CreateGuide() {
 
       if(isSuccess){
           dispatch(resetGuides())
+          navigate('/guides')
       }
 
       dispatch(resetGuides())
   },[dispatch, isError, isSuccess, navigate, message])
+
 
   const handleEditorChange = () => {
     let content = editorRef.current.getContent()
@@ -40,7 +44,13 @@ function CreateGuide() {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    dispatch(createGuide({title, description, markdown}))
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("markdown", markdown);
+    formData.append("coverImage", coverImage)
+    console.log({title, description, markdown, coverImage})
+    dispatch(createGuide(formData))
   }
 
   if(isLoading){
@@ -63,6 +73,12 @@ function CreateGuide() {
               <label className="input-group input-group-vertical">
                 <span className='bg-secondary text-white'>Description</span>
                 <input type="text" placeholder="Enter Description" className="input focus:border-secondary w-full input-bordered" id='description' name='description' value={description} onChange={(e) => setDescription(e.target.value)} required/>
+              </label>
+            </div>
+            <div className="form-control">
+              <label className="input-group input-group-vertical">
+                <span className='bg-secondary text-white'>Image</span>
+                <input type="file" onChange={(e) => setCoverImage(e.target.files[0])} required/>
               </label>
             </div>
             <div className="form-control">

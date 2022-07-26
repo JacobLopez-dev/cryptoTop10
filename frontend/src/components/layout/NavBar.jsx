@@ -1,7 +1,6 @@
 import {Link, useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {logout, reset} from '../../features/auth/authSlice'
-import Particle from './Particle'
 import ThemeToggle from '../buttons/ThemeToggle'
 
 function Navbar() {
@@ -40,7 +39,7 @@ function Navbar() {
             </li>
             {/* Will eventually lead to user profile */}
             <li>
-              <Link to='/profile'>Profile</Link>
+              <Link to={`/author/${user.name}`}>Profile</Link>
             </li>
             <li>
               <button className='btn bg-primary text-white' onClick={onLogout}>Logout</button>

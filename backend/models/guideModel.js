@@ -9,6 +9,11 @@ const guideSchema = mongoose.Schema({
         require: [true],
         ref: 'User'
     },
+    authorName: {
+        type: String,
+        require: [true],
+        unique: false
+    },
     title: {
         type: String,
         required: [true, 'Please add a title']
@@ -26,6 +31,9 @@ const guideSchema = mongoose.Schema({
         type: String, 
         required: [true],
         trim: true
+    },
+    coverImage: {
+        type: String
     },
     sanitizedHtml: {
         type: String,

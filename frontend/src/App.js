@@ -20,7 +20,7 @@ import ScrollToTop from './components/layout/ScrollToTop';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import GuideEdit from './pages/GuideEdit';
-
+import Profile from './pages/Profile'
 
 function App() {
   const [menuToggle, setMenuToggle] = useState('checked')
@@ -67,6 +67,10 @@ function App() {
         {/* Only accessible by admin */}
         <Route path='/admin-dashboard' element={<AdminRoute/>}>
           <Route path="/admin-dashboard" element={<AdminDashboard/>}/>
+        </Route>
+        {/* Profile accessible by whoever is logged in */}
+        <Route path='/author/:user' element={<PrivateRoute/>}>
+          <Route path='/author/:user' element={<Profile/>}/>
         </Route>
       </Routes>
       </main>

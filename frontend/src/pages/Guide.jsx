@@ -1,6 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux'
 import {useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import Spinner from '../components/Spinner'
 import {getGuide, resetGuides} from '../features/guides/guidesSlice'
@@ -29,6 +29,8 @@ useEffect(() => {
   }
 }, [dispatch, isSuccess])
 
+console.log(guide)
+
 
 if(isLoading){
   return <Spinner/>
@@ -44,13 +46,17 @@ if(isError){
     {/* Heading */}
     <div className="flex flex-col h-fit break-normal p-3 bg-neutral-content rounded-t-xl">
     {/* image below */}
-      <div className='h-96 w-full bg-primary rounded-xl mb-4'>content</div>
+      <div className='h-96 w-full bg-primary rounded-xl mb-4'>
+        <img src={guide.coverImage}/>
+      </div>
       
       <div className="flex items-center justify-between mb-4">
         <h1 className='text-3xl'>
           {guide.title}
         </h1>
-        <h3 className='text-xs'>Written by <br/>{guide.author}</h3>
+        <h3 className='text-xs'>Written by <br/>
+          <Link to="/">{guide.authorName}</Link>
+        </h3>
       </div>
       <p>
         <i>{guide.description}</i>
