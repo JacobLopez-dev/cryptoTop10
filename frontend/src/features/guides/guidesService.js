@@ -42,7 +42,7 @@ const updateGuide = async (guideData, token) => {
     console.log(guideData)
 
     // pass guide data and bearer token for auth
-    const response = await axios.put(API_URL+`${guideData.slug}`, guideData, config)
+    const response = await axios.put(API_URL+`/${guideData.slug}`, guideData, config)
     return response.data
 }
 
