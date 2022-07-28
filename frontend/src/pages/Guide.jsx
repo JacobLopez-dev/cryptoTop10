@@ -1,6 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux'
 import {useEffect} from 'react'
-import {useParams, Link} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import Spinner from '../components/Spinner'
 import {getGuide, resetGuides} from '../features/guides/guidesSlice'
