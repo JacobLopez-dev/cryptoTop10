@@ -8,7 +8,7 @@ function Features() {
     
     <div className="flex lg:flex-row justify-center">
     <AnimatePresence>
-      <motion.div  className="grid border lg:w-11/12 justify-self-center"
+      <motion.div  className="grid lg:w-11/12 justify-self-center"
         initial={{opacity: 0}}
         animate={{opacity: 1}}
         exit={{opacity: 0}}
