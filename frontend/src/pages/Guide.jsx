@@ -42,21 +42,24 @@ if(isError){
 
 
   return (
-    <section className='flex flex-col w-10/12 m-auto h-fit p-5 text-neutral'>
+    <section className='flex flex-col w-12/12 lg:w-10/12 m-auto h-fit p-5 text-neutral'>
     {/* Heading */}
     <div className="flex flex-col h-fit break-normal p-3 bg-neutral-content rounded-t-xl">
-    {/* image below */}
-      <div className='h-96 w-full bg-primary rounded-xl mb-4'>
-        <img src={guide.coverImage}/>
+    {/* image*/}
+      <div className='h-fit w-full bg-primary rounded-xl mb-4 mx-auto'>
+        <img src={guide.coverImage} alt="guide-cover" className='w-fit mx-auto'/>
       </div>
       
       <div className="flex items-center justify-between mb-4">
         <h1 className='text-3xl'>
           {guide.title}
         </h1>
-        <h3 className='text-xs'>Written by <br/>
-          <Link to="/">{guide.authorName}</Link>
-        </h3>
+        <div>
+          <h3 className='text-xs flex flex-col'>Written by <br/>
+            {/* <Link to="/">{guide.authorName}</Link> */}
+            <span className='self-end'>{guide.authorName}</span>
+          </h3>
+        </div>
       </div>
       <p>
         <i>{guide.description}</i>

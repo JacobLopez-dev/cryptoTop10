@@ -1,6 +1,6 @@
 import {useEffect, useState, useRef} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {Link, useNavigate} from 'react-router-dom' 
+import {useNavigate} from 'react-router-dom' 
 import {toast} from 'react-toastify'
 import { createGuide, resetGuides } from '../features/guides/guidesSlice'
 import { Editor } from '@tinymce/tinymce-react';
@@ -9,7 +9,7 @@ import Spinner from '../components/Spinner'
 
 function CreateGuide() {
 
-  const {user} = useSelector((state) => state.auth)
+  // const {user} = useSelector((state) => state.auth)
   const {isLoading, isError, isSuccess, message} = useSelector((state) => state.guides)
 
   const [title, setTitle] = useState('')

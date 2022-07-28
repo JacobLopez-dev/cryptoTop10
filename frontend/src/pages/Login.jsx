@@ -31,7 +31,7 @@ function Login() {
       navigate('/admin-dashboard')
     }
 
-    if(isSuccess && user && !user.isAdmin){
+    if(isSuccess || user){
       navigate('/')
     }
 

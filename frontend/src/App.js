@@ -23,28 +23,26 @@ import GuideEdit from './pages/GuideEdit';
 import Profile from './pages/Profile'
 
 function App() {
-  const [menuToggle, setMenuToggle] = useState('checked')
+  const [menuToggle, setMenuToggle] = useState('unchecked')
 
   const toggleMenu = (e) => {
     if(menuToggle === 'unchecked'){
       setMenuToggle('checked')
-      // console.log(menuToggle)
     }else{
       setMenuToggle('unchecked')
-      // console.log(menuToggle)
     }
   }
   
   useEffect(()=>{
     const menuButton = document.querySelector('.drawer-toggle')
-    let menuChecked = menuToggle === 'unchecked' ? true : false
+    let menuChecked = menuToggle === 'checked' ? true : false
     menuButton.checked = menuChecked
   }, [menuToggle])
 
   return (
     <Router>
     <ScrollToTop>
-    <div data-theme="dark" className="drawer">
+    <div className="drawer">
     <input id="my-drawer-3" type="checkbox" className="drawer-toggle" onClick={(e)=>toggleMenu(e)}/> 
       <div className="drawer-content flex flex-col justify-between ">
       <NavBar/>

@@ -7,10 +7,10 @@ function GuideList() {
   return (
     <>
         {guides.map(guide => (
-            <div className="card bg-secondary w-96 shadow-xl h-fit rounded-xl" key={guide._id}>
+            <div className="card bg-secondary h-full w-96 shadow-xl rounded-xl" key={guide._id}>
               <figure>
-                <div className='h-56 w-full bg-primary rounded-xl mb-4'>
-                  <img src={guide.coverImage}/>
+                <div className='bg-primary rounded-xl mb-4 w-full'>
+                  <img src={guide.coverImage} alt="guide-cover" className='h-56 w-full'/>
                 </div>
               </figure>
               <div className="card-body">

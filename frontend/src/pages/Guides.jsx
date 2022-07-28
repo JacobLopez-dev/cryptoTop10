@@ -44,7 +44,7 @@ if(isLoading){
           </div>
         </div>
       </div>
-      <section className='w-full h-full grid lg:grid-cols-3 md:grid-cols-2 place-items-center gap-6 mt-5'>
+      <section className='w-full h-fit grid lg:grid-cols-3 md:grid-cols-2 place-items-center gap-5 mt-5'>
         <GuideList/>
       </section>
    </div>
