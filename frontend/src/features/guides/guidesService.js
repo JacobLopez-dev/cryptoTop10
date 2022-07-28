@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = '/api/guides/'
+const API_URL = '/api/guides'
 
 const createGuide = async (guideData, token) => {
     const config = {

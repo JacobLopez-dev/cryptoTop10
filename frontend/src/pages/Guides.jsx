@@ -11,6 +11,10 @@ function Guides() {
 const {guides, isLoading, isSuccess} = useSelector((state) => state.guides)
 const dispatch = useDispatch()
 
+useEffect(() => {
+  dispatch(getGuides())
+  console.log('Guide page get dispatch')
+}, [dispatch])
 
 useEffect(() => {
   return () => {
@@ -21,10 +25,6 @@ useEffect(() => {
   }
 }, [dispatch, isSuccess])
 
-useEffect(() => {
-  dispatch(getGuides())
-  console.log('Guide page get dispatch')
-}, [dispatch])
 
 console.log(guides)
 
