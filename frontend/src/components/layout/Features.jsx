@@ -6,17 +6,17 @@ function Features() {
   return (
     <>
     
-    <div className="flex lg:flex-row justify-center p-5">
+    <div className="flex lg:flex-row justify-center">
     <AnimatePresence>
-      <motion.div  className="grid lg:w-11/12 justify-self-center"
+      <motion.div  className="grid border lg:w-11/12 justify-self-center"
         initial={{opacity: 0}}
         animate={{opacity: 1}}
         exit={{opacity: 0}}
         transition={{ duration: 2 }}
       >
-      <div className="flex flex-col lg:flex-row w-full">
+      <div className="flex flex-col lg:flex-row">
       {/* Card 1 */}
-      <div className="grid flex-grow h-fit rounded-box place-items-center p-3 text-neutral-content">
+      <div className="grid flex-grow h-fit rounded-box place-items-center text-neutral-content">
           <div className="card w-8/12 p-3 bg-primary shadow-2xl rounded-lg">
             <figure><FaBookReader className='feature-icon'/></figure>
             <div className="card-body">
@@ -33,7 +33,7 @@ function Features() {
         <div className="divider lg:divider-horizontal"></div>
 
         {/* Card 2 */}
-        <div className="grid flex-grow h-fit rounded-box place-items-center p-3 text-neutral-content">
+        <div className="grid flex-grow h-fit rounded-box place-items-center text-neutral-content">
           <div className="card w-8/12 p-3 bg-primary shadow-2xl rounded-lg">
             <figure><FaNewspaper className='feature-icon'/></figure>
             <div className="card-body">
