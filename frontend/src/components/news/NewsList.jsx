@@ -2,9 +2,9 @@ import NewsCard from './NewsCard'
 import {useSelector} from 'react-redux'
 import Spinner from '../Spinner'
 
-function NewsList() {
+function NewsList({newsArticles}) {
 
-  const {newsArticles, isLoading} = useSelector((state) => state.newsArticles)
+  const {isLoading} = useSelector((state) => state.newsArticles)
 
 
   if(isLoading){
