@@ -3,6 +3,8 @@ import {useSelector, useDispatch} from 'react-redux';
 import {getNewsArticles, resetNews} from '../features/news/newsSlice'
 import Particle from '../components/layout/Particle'
 import NewsList from '../components/news/NewsList';
+import Spinner from '../components/Spinner'
+
 
 
 function News() {
@@ -741,7 +743,7 @@ function News() {
 //         ]
 //     }
 // ]
-  const {isSuccess, newsArticles} = useSelector((state) => state.newsArticles)
+  const {isSuccess, isLoading, newsArticles} = useSelector((state) => state.newsArticles)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -761,7 +763,9 @@ function News() {
 
   console.log(newsArticles)
 
-
+  if(isLoading){
+    return <Spinner/>
+  }
   return (
     <div className="h-fit">
     <div className="hero h-96 bg-primary">
