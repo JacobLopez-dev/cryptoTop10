@@ -776,7 +776,7 @@ function News() {
         </div>
       </div>
       <section className='w-full h-fit grid lg:grid-cols-3 md:grid-cols-2 place-items-center gap-10 mt-5'>
-        <NewsList/>
+        <NewsList newsArticles={newsArticles}/>
       </section>
     </div>
   )

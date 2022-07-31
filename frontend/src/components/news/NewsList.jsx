@@ -1,9 +1,6 @@
-import {useSelector} from 'react-redux';
 import NewsCard from './NewsCard'
 
-function NewsList() {
-
-  const {newsArticles} = useSelector((state) => state.news)
+function NewsList({newsArticles}) {
 
   return (
     <>
