@@ -70,6 +70,19 @@
     background: transparent;
   }
 
+  /* Article Sentiment classes */
+  .Neutral{
+    color: inherit;
+  }
+
+  .Positive{
+    color: green
+  }
+
+  .Negative{
+    color: red
+  }
+/* End */
 
 @keyframes spin {
   from {
@@ -79,3 +92,4 @@
     transform: rotate(360deg);
   }
 }
+

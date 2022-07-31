@@ -18,6 +18,7 @@ app.use(cors())
 
 app.use('/api', require('./routes/cryptoRoute'))
 app.use('/api/guides', require('./routes/guideRoute'))
+app.use('/api/news', require('./routes/newsRoute'))
 app.use('/api/users', require('./routes/userRoutes'))
 
 // Serve Frontend
