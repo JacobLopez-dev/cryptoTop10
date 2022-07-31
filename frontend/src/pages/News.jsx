@@ -1,8 +1,8 @@
 import {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {getNewsArticles, reset} from '../features/news/newsSlice'
-import NewsCard from '../components/news/NewsCard';
+import {getNewsArticles, resetNews} from '../features/news/newsSlice'
 import Particle from '../components/layout/Particle'
+import NewsList from '../components/news/NewsList';
 
 
 function News() {
@@ -745,19 +745,19 @@ function News() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    dispatch(getNewsArticles())
+    console.log('news dispatch')
+  }, [dispatch])
+
+  useEffect(() => {
     return () => {
         if(isSuccess) {
-            dispatch(reset())
+            dispatch(resetNews())
         }
         console.log('news page reset')
     }
     
 }, [dispatch, isSuccess])
-
-  useEffect(() => {
-    dispatch(getNewsArticles())
-    console.log('news dispatch')
-  }, [dispatch])
 
   console.log(newsArticles)
 
@@ -776,11 +776,7 @@ function News() {
         </div>
       </div>
       <section className='w-full h-fit grid lg:grid-cols-3 md:grid-cols-2 place-items-center gap-10 mt-5'>
-        {
-          newsArticles.map(article => (
-            <NewsCard article={article} key={article.title}/>
-          ))
-        }
+        <NewsList/>
       </section>
     </div>
   )

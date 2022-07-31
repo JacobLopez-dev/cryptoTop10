@@ -16,27 +16,16 @@ async(_, thunkApi) => {
         return response.data
     }catch(error){
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-        return (message)
+        return thunkApi.rejectWithValue(message)
     }
 })
-
-// export const getSingleCrypto = createAsyncThunk('cryptos/getSingleCrypto',
-// async(cryptoID, thunkApi) => {
-//     try{
-//         let response = await cryptoService.getSingleCrypto(cryptoID)
-//         return response.data[cryptoID]
-//     }catch(error){
-//         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-//         return (message)
-//     }
-// })
 
 
 const newsSlice = createSlice({
     name: 'news',
     initialState,
     reducers: {
-        reset: (state) => initialState,
+        resetNews: (state) => initialState,
     },
     extraReducers: (builder) => {
         builder
@@ -57,7 +46,7 @@ const newsSlice = createSlice({
 })
 
 export const {
-    reset,
+    resetNews,
 } = newsSlice.actions
 
 export default newsSlice.reducer
