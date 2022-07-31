@@ -2,7 +2,7 @@ import NewsCard from './NewsCard'
 import {useSelector} from 'react-redux'
 import Spinner from '../Spinner'
 
-function NewsList({newsArticles}) {
+function NewsList() {
 
   const {isLoading} = useSelector((state) => state.newsArticles)
 
@@ -12,13 +12,7 @@ function NewsList({newsArticles}) {
   }
 
   return (
-    <>
-    {
-        newsArticles.map(article => (
-          <NewsCard article={article} key={article.title}/>
-        ))
-    }
-    </>
+      <NewsCard/>
   )
 }
 

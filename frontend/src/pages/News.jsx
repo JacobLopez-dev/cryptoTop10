@@ -3,11 +3,10 @@ import {useSelector, useDispatch} from 'react-redux';
 import {getNewsArticles, resetNews} from '../features/news/newsSlice'
 import Particle from '../components/layout/Particle'
 import NewsList from '../components/news/NewsList';
-import Spinner from '../components/Spinner'
 
 function News() {
 
-  const { newsArticles, isLoading, isSuccess} = useSelector((state) => state.newsArticles)
+  const { newsArticles, isSuccess} = useSelector((state) => state.newsArticles)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -25,12 +24,7 @@ function News() {
     console.log('news dispatch')
   }, [dispatch])
 
-
   console.log(newsArticles)
-
-  if(isLoading){
-    return <Spinner/>
-  }
 
   return (
     <div className="h-fit">
@@ -46,7 +40,7 @@ function News() {
         </div>
       </div>
       <section className='w-full h-fit grid lg:grid-cols-3 md:grid-cols-2 place-items-center gap-10 mt-5'>
-        {newsArticles && <NewsList newsArticles={newsArticles}/>}
+        {newsArticles && <NewsList/>}
       </section>
     </div>
   )

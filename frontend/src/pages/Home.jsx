@@ -5,13 +5,10 @@ import { getTopCryptos, reset} from '../features/topCryptos/topCryptosSlice'
 import CryptoTable from '../components/cryptos/CryptoTable'
 import Features from '../components/layout/Features'
 import Particle from '../components/layout/Particle'
-import { getNewsArticles } from '../features/news/newsSlice'
 
 function Home() {
 
   const {isSuccess, cryptos} = useSelector((state) => state.cryptos)
-  // const {newsArticles} = useSelector((state) => state.newsArticles)
-
   const dispatch = useDispatch()
   
   useEffect(() => {
@@ -26,12 +23,10 @@ function Home() {
 
   useEffect(() => {
     dispatch(getTopCryptos())
-    // dispatch(getNewsArticles())
     console.log('Home page get dispatch')
   }, [dispatch])
 
   console.log(cryptos)
-  // console.log(newsArticles)
 
   return (
    <>
