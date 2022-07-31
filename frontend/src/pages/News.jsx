@@ -741,7 +741,7 @@ function News() {
 //         ]
 //     }
 // ]
-  const {isSuccess, newsArticles} = useSelector((state) => state.news)
+  const {isSuccess, newsArticles} = useSelector((state) => state.newsArticles)
   const dispatch = useDispatch()
 
   useEffect(() => {

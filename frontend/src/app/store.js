@@ -7,7 +7,7 @@ import authReducer from '../features/auth/authSlice'
 export const store = configureStore({
   reducer: {
     guides: guideReducer,
-    news: newsReducer,
+    newsArticles: newsReducer,
     cryptos: cryptoReducer,
     auth: authReducer
   },

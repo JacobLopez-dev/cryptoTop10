@@ -9,7 +9,7 @@ const initialState = {
     message: ''
 }
 
-export const getNewsArticles = createAsyncThunk('news/getNews',
+export const getNewsArticles = createAsyncThunk('newsArticles/getNews',
 async(_, thunkApi) => {
     try{
         let response = await newsService.getNewsArticles()
