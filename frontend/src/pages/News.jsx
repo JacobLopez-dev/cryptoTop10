@@ -743,13 +743,8 @@ function News() {
 //         ]
 //     }
 // ]
-  const {isSuccess, isLoading, newsArticles} = useSelector((state) => state.newsArticles)
+  const { newsArticles, isLoading, isSuccess} = useSelector((state) => state.newsArticles)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(getNewsArticles())
-    console.log('news dispatch')
-  }, [dispatch])
 
   useEffect(() => {
     return () => {
@@ -761,11 +756,18 @@ function News() {
     
 }, [dispatch, isSuccess])
 
+  useEffect(() => {
+    dispatch(getNewsArticles())
+    console.log('news dispatch')
+  }, [dispatch])
+
+
   console.log(newsArticles)
 
   if(isLoading){
     return <Spinner/>
   }
+
   return (
     <div className="h-fit">
     <div className="hero h-96 bg-primary">

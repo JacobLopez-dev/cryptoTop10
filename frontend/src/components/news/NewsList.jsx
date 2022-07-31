@@ -1,6 +1,15 @@
 import NewsCard from './NewsCard'
+import {useSelector} from 'react-redux'
+import Spinner from '../Spinner'
 
-function NewsList({newsArticles}) {
+function NewsList() {
+
+  const {newsArticles, isLoading} = useSelector((state) => state.newsArticles)
+
+
+  if(isLoading){
+    return <Spinner/>
+  }
 
   return (
     <>
