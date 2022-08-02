@@ -10,9 +10,9 @@ const initialState = {
 }
 
 export const getNewsArticles = createAsyncThunk('newsArticles/getNews',
-async(_, thunkApi) => {
+async({cryptoList, page}, thunkApi) => {
     try{
-        let response = await newsService.getNewsArticles()
+        let response = await newsService.getNewsArticles(cryptoList, page)
         return response.data
     }catch(error){
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()

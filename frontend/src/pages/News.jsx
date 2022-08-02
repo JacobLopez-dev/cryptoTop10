@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {getNewsArticles, resetNews} from '../features/news/newsSlice'
 import Particle from '../components/layout/Particle'
@@ -6,7 +6,9 @@ import NewsList from '../components/news/NewsList';
 
 function News() {
 
-  const { newsArticles, isSuccess} = useSelector((state) => state.newsArticles)
+  const {newsArticles, isSuccess} = useSelector((state) => state.newsArticles)
+  const {cryptos} = useSelector((state) => state.cryptos)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -20,7 +22,10 @@ function News() {
 }, [dispatch, isSuccess])
 
   useEffect(() => {
-    dispatch(getNewsArticles())
+    dispatch(getNewsArticles({
+      cryptoList: 'BTC',
+      page: 1
+    }))
     console.log('news dispatch')
   }, [dispatch])
 
