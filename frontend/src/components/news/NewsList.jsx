@@ -6,7 +6,7 @@ import NewsCard from './NewsCard'
 import Spinner from '../Spinner'
 
 function NewsList() {
-  const {newsArticles, isLoading} = useSelector((state) => state.newsArticles)
+  const {newsArticles, page, isLoading} = useSelector((state) => state.newsArticles)
   const {cryptos} = useSelector((state) => state.cryptos)
 
   const dispatch = useDispatch()
@@ -16,11 +16,13 @@ function NewsList() {
       const cryptoList = (cryptos.map(crypto => crypto.symbol))
         dispatch(getNewsArticles({
           cryptoList: cryptoList,
-          page: 1
+          page: page
         }))
         console.log(cryptoList)
     }
-  },[cryptos, dispatch])
+  },[cryptos, dispatch, page])
+
+  console.log(page)
 
   if(isLoading){
     return <Spinner/>

@@ -3,6 +3,7 @@ import newsService from "./newsService"
 
 const initialState = {
     newsArticles: [],
+    page: 1,
     isError: false,
     isSuccess: false,
     isLoading: false,
@@ -26,6 +27,15 @@ const newsSlice = createSlice({
     initialState,
     reducers: {
         resetNews: (state) => initialState,
+        nextPage: (state) => {
+            if(state.page === 5) return
+            state.page = state.page + 1
+        },
+        prevPage: (state) => {
+            if(state.page === 1) return
+            state.page = state.page - 1
+        }
+        
     },
     extraReducers: (builder) => {
         builder
@@ -47,7 +57,8 @@ const newsSlice = createSlice({
 
 export const {
     resetNews,
-    addNewsArticles
+    prevPage,
+    nextPage
 } = newsSlice.actions
 
 export default newsSlice.reducer

@@ -8,7 +8,7 @@ const news = axios.create({
 })
 
 const getNews = asyncHandler(async (req, res) => {
-    const response = await news.get(`v1?tickers=${req.params.tickers}&items=50&page=${req.params.page}&items=20&sortby=rank`);
+    const response = await news.get(`v1?tickers=${req.params.tickers}&items=50&page=${req.params.page}&items=20`);
 
     if(!response){
         res.status(400)

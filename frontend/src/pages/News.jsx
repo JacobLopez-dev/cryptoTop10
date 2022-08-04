@@ -2,11 +2,15 @@ import {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {resetNews} from '../features/news/newsSlice'
 import {getTopCryptos} from '../features/topCryptos/topCryptosSlice'
+import {prevPage, nextPage} from '../features/news/newsSlice'
+
 import Particle from '../components/layout/Particle'
 import NewsList from '../components/news/NewsList';
 
 function News() {
   const {cryptos, isSuccess} = useSelector((state) => state.cryptos)
+  const {page} = useSelector((state) => state.newsArticles)
+
 
   const dispatch = useDispatch()
 
@@ -42,6 +46,10 @@ useEffect(() => {
       <section className='w-full h-fit grid lg:grid-cols-3 md:grid-cols-2 place-items-center gap-10 mt-5'>
         {cryptos && <NewsList cryptos={cryptos}/>}
       </section>
+      <div className="btn-group grid grid-cols-2 w-1/3 mt-10 m-auto">
+        {page !== 1 ? <button className="btn btn-outline" onClick={() => dispatch(prevPage())}>Previous page</button> : <button className="btn btn-outline" disabled>Previous page</button>}
+        {page !== 5 ? <button className="btn btn-outline" onClick={() => dispatch(nextPage())}>Next Page</button> : <button className="btn btn-outline" disabled>Next page</button>}
+      </div>
     </div>
   )
 }
