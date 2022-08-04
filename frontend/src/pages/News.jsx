@@ -1,13 +1,12 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {getNewsArticles, resetNews} from '../features/news/newsSlice'
+import {resetNews} from '../features/news/newsSlice'
+import {getTopCryptos} from '../features/topCryptos/topCryptosSlice'
 import Particle from '../components/layout/Particle'
 import NewsList from '../components/news/NewsList';
 
 function News() {
-
-  const {newsArticles, isSuccess} = useSelector((state) => state.newsArticles)
-  const {cryptos} = useSelector((state) => state.cryptos)
+  const {cryptos, isSuccess} = useSelector((state) => state.cryptos)
 
   const dispatch = useDispatch()
 
@@ -21,15 +20,11 @@ function News() {
     
 }, [dispatch, isSuccess])
 
-  useEffect(() => {
-    dispatch(getNewsArticles({
-      cryptoList: 'BTC',
-      page: 1
-    }))
-    console.log('news dispatch')
-  }, [dispatch])
+useEffect(() => {
+  dispatch(getTopCryptos())
+  console.log('news dispatch')
+}, [dispatch])
 
-  console.log(newsArticles)
 
   return (
     <div className="h-fit">
@@ -45,7 +40,7 @@ function News() {
         </div>
       </div>
       <section className='w-full h-fit grid lg:grid-cols-3 md:grid-cols-2 place-items-center gap-10 mt-5'>
-        {newsArticles && <NewsList/>}
+        {cryptos && <NewsList cryptos={cryptos}/>}
       </section>
     </div>
   )

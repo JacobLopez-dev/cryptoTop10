@@ -1,7 +1,6 @@
 import {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { getTopCryptos, reset} from '../features/topCryptos/topCryptosSlice'
-// import { getGuides, resetGuides } from '../features/guides/guidesSlice'
 import CryptoTable from '../components/cryptos/CryptoTable'
 import Features from '../components/layout/Features'
 import Particle from '../components/layout/Particle'
@@ -26,7 +25,7 @@ function Home() {
     console.log('Home page get dispatch')
   }, [dispatch])
 
-  console.log(cryptos)
+  // console.log(cryptos)
 
   return (
    <>

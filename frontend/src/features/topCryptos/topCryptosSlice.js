@@ -2,7 +2,7 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
 import cryptoService from "./topCryptosService"
 
 const initialState = {
-    cryptos: [],
+    cryptos: null,
     singleCrypto: {},
     isError: false,
     isSuccess: false,

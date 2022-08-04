@@ -47,6 +47,7 @@ const newsSlice = createSlice({
 
 export const {
     resetNews,
+    addNewsArticles
 } = newsSlice.actions
 
 export default newsSlice.reducer

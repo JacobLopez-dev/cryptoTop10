@@ -1,17 +1,10 @@
-import {useSelector} from 'react-redux'
-
 function NewsCard({article}) {
-
-  const {newsArticles} = useSelector((state) => state.newsArticles)
-
 
   const openInNewTab = url => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <>
-      {newsArticles.map(article => (
         <div className="card bg-secondary h-full w-96 shadow-xl rounded-xl" key={article.title}>
           <figure>
             <div className='bg-primary rounded-xl mb-4 w-full'>
@@ -27,9 +20,6 @@ function NewsCard({article}) {
             <h2 className="card-title hover:text-primary cursor-pointer" onClick={() => openInNewTab(article.news_url)}>{article.title}</h2>
           </div>
         </div>
-      ))}
-    </>
-
   )
 }
 

@@ -15,8 +15,6 @@ const getNews = asyncHandler(async (req, res) => {
         throw new Error('Top 10 not retrieved')
     }
 
-    console.log(req.params)
-
     res.status(201).json(response.data)
 })
 
