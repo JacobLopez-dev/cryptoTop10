@@ -12,17 +12,18 @@ function NewsList() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if(cryptos){
+    if(cryptos.length !== 0){
       const cryptoList = (cryptos.map(crypto => crypto.symbol))
         dispatch(getNewsArticles({
           cryptoList: cryptoList,
           page: page
         }))
-        console.log(cryptoList)
+        // console.log(cryptoList)
     }
   },[cryptos, dispatch, page])
 
   console.log(page)
+  console.log(newsArticles)
 
   if(isLoading){
     return <Spinner/>

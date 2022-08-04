@@ -25,7 +25,7 @@ function Home() {
     console.log('Home page get dispatch')
   }, [dispatch])
 
-  // console.log(cryptos)
+  console.log(cryptos)
 
   return (
    <>
