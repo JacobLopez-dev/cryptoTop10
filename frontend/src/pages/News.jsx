@@ -46,7 +46,7 @@ useEffect(() => {
       <section className='w-full h-fit grid lg:grid-cols-3 md:grid-cols-2 place-items-center gap-10 mt-5'>
         {cryptos && <NewsList cryptos={cryptos}/>}
       </section>
-      <div className="btn-group grid grid-cols-2 w-1/3 mt-10 m-auto">
+      <div className="btn-group grid grid-cols-2 w-2/3 md:w-1/3 lg:w-1/3 mt-10 m-auto">
         {page !== 1 ? <button className="btn btn-outline" onClick={() => dispatch(prevPage())}>Previous page</button> : <button className="btn btn-outline" disabled>Previous page</button>}
         {page !== 5 ? <button className="btn btn-outline" onClick={() => dispatch(nextPage())}>Next Page</button> : <button className="btn btn-outline" disabled>Next page</button>}
       </div>
