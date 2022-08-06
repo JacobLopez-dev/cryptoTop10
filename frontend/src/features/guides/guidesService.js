@@ -19,6 +19,12 @@ const getGuides = async () => {
     return response.data
 }
 
+// Get all guides by a specific user
+const getUsersGuides = async (authorID) => {
+    const response = await axios.get(API_URL+`/${authorID}`)
+    return response.data
+}
+
 // Get single guide
 const getGuide = async (guideSlug) => {
     const response = await axios.get(API_URL+`/${guideSlug}`)
@@ -49,6 +55,7 @@ const updateGuide = async (guideData, token) => {
 const guidesService = {
     createGuide,
     getGuide,
+    getUsersGuides,
     getGuides,
     deleteGuide,
     updateGuide

@@ -42,7 +42,7 @@ function AdminDashboard() {
           Guides
         </h1>
         <div className="collapse-content"> 
-          <GuideTable guides={guides}/>  
+          <GuideTable/>  
         </div>
       </div>
       </div>

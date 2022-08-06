@@ -3,6 +3,7 @@ import guidesService from "./guidesService"
 
 const initialState = {
     guides: [],
+    currentAuthorGuides: [],
     guide: {},
     isError: false,
     isSuccess: false,
@@ -25,11 +26,22 @@ export const createGuide = createAsyncThunk('guides/create',
 })
 
 
-// Get guides
+// Get all guides
 export const getGuides = createAsyncThunk('guides/get',
   async(_, thunkApi) => {
     try {
       return await guidesService.getGuides()
+    } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+      return thunkApi.rejectWithValue(message)
+    }
+})
+
+// Get all users guides
+export const getUsersGuides = createAsyncThunk('guides/getCurrentAuthorGuides',
+  async(authorID, thunkApi) => {
+    try {
+      return await guidesService.getUsersGuides(authorID)
     } catch (error) {
       const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
       return thunkApi.rejectWithValue(message)
@@ -101,6 +113,19 @@ export const guideSlice = createSlice({
         state.guides = action.payload
       })
       .addCase(getGuides.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(getUsersGuides.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(getUsersGuides.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.currentAuthorGuides = action.payload
+      })
+      .addCase(getUsersGuides.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

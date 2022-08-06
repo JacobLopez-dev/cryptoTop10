@@ -28,7 +28,7 @@ const upload = (bucketName) =>
   });
 
 // @description get guides
-// @route       GET /api/guides
+// @route       GET /api/guides/all-guides
 // @access      Public
 const getGuides = asynchHandler(async(req, res) => {
     const guides = await Guide.find().sort({
@@ -52,12 +52,22 @@ const getGuide = asynchHandler(async(req, res) => {
     res.status(200).json(guide)
 })
 
+// @description get all guides belonging to a particular user
+// @route       GET /api/guides/:authorName
+// @access      Public
+const getUsersGuides = asynchHandler(async(req, res) => {
+    const guides = await Guide.find(
+        {author: req.params.authorID}
+    ).sort({
+        createdAt: 'desc'
+    })
+    res.status(200).json(guides)
+})
+
 
 // @description post guide
 // @route       POST /api/guides
 // @access      Private
-
-
 // Upload file, then create the new guide with the req.file.location that was created (the amazon s3 link)
 const createGuide = asynchHandler(async(req, res) => {
 
@@ -90,7 +100,6 @@ const createGuide = asynchHandler(async(req, res) => {
             coverImage: req.file.location
         })
         res.status(201).json(guide)
-        console.log(guide)
     })
 })
 
@@ -148,6 +157,7 @@ const deleteGuide = asynchHandler(async(req, res) => {
 module.exports = {
      getGuide,
      getGuides,
+     getUsersGuides,
      createGuide,
      deleteGuide,
      updateGuide

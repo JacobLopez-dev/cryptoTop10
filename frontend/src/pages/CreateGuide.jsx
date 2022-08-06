@@ -23,6 +23,15 @@ function CreateGuide() {
     const navigate = useNavigate()
 
     useEffect(() => {
+      return () => {
+          if(isSuccess) {
+              dispatch(resetGuides())
+          }
+          console.log('guide page reset')
+      }
+    }, [dispatch, isSuccess])
+
+    useEffect(() => {
       if(isError){
           toast.error(message)
       }
@@ -31,8 +40,6 @@ function CreateGuide() {
           dispatch(resetGuides())
           navigate('/guides')
       }
-
-      dispatch(resetGuides())
   },[dispatch, isError, isSuccess, navigate, message])
 
 
@@ -86,7 +93,7 @@ function CreateGuide() {
                 <span className='bg-secondary text-white'>Guide</span>
                 {/* Editor */}
                 <Editor
-                  apiKey={process.env.TINY_MCE_API}
+                  apiKey={'jcgbnw8hcipbythv06fis6lj85r7qztysed4csnub713ibjl'}
                   onInit={(evt, editor) => editorRef.current = editor}
                   init={{
                     plugins: [

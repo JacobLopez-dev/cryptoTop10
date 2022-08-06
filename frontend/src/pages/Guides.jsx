@@ -1,4 +1,3 @@
-// See sundae swap https://help.sundaeswap.finance/en/
 import { useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {getGuides, resetGuides} from '../features/guides/guidesSlice'
