@@ -26,7 +26,7 @@ function GuideEdit() {
       toast.error(message)
     }
     dispatch(getGuide(slug))
-  },[])
+  },[dispatch, isError, message, slug])
 
   useEffect(() => {
     return () => {
@@ -86,7 +86,7 @@ const handleEditorChange = () => {
                 <span className='bg-secondary text-white'>Guide</span>
                 {/* Editor */}
                 <Editor
-                  apiKey={process.env.TINY_MCE_API}
+                  apiKey={'jcgbnw8hcipbythv06fis6lj85r7qztysed4csnub713ibjl'}
                   onInit={(evt, editor) => editorRef.current = editor}
                   init={{
                     plugins: [

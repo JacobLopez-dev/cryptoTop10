@@ -89,10 +89,10 @@ function Particle({height}) {
               enable: true,
               mode: "grab"
               },
-              onclick: {
-                enable: true,
-                mode:'push'
-              },
+              // onclick: {
+              //   enable: true,
+              //   mode:'push'
+              // },
               resize: true
             },
             modes: {

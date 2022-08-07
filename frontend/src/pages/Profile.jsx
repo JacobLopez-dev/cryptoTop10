@@ -1,13 +1,14 @@
 import {useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import { getUsersGuides, resetGuides } from '../features/guides/guidesSlice'
 import UserGuides from '../components/guides/userGuides/UserGuides'
 import Particle from '../components/layout/Particle'
-
+import Spinner from '../components/Spinner'
 
 function Profile() {
   const {user} = useSelector((state) => state.auth)
-  const {currentAuthorGuides, isSuccess} = useSelector((state) => state.guides)
+  const {currentAuthorGuides, isSuccess, isLoading} = useSelector((state) => state.guides)
 
   const dispatch = useDispatch()
 
@@ -26,16 +27,29 @@ function Profile() {
     console.log('Profile page dispatch')
   }, [dispatch, user._id])
 
+  if(isLoading){
+    return (
+      <Spinner/>
+    )
+  }
+
   return (
-    <div>
-      <div className="header h-96 flex flex-col bg-primary justify-center items-center">
-        <Particle height={425}/>
-        <h1 className='text-3xl'>Hello, {user.name}</h1>
+    <>
+    {/* Header */}
+      <div className="header h-96 bg-primary grid">
+        <Particle height={400}/>
+        <h1 className='text-4xl place-self-center'>Hello, {user.name}</h1>
       </div>
-      <div className="h-screen p-5">
+      <div className="w-full flex items-center justify-between mt-5 p-5">
+        <h2 className='text-3xl'>Your Articles</h2>
+        <Link to={'/new-guide'}>
+          <button className='btn bg-secondary rounded-lg'>New Article</button>
+        </Link>
+      </div>
+      <section className="h-fit p-5 flex flex-col items-center">
         {currentAuthorGuides && <UserGuides/>}
-      </div>
-    </div>
+      </section>
+    </>
   )
 }
 

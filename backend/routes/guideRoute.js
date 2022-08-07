@@ -10,7 +10,7 @@ router.route('/').post(protect, createGuide)
 router.route('/all-guides').get(getGuides)
 
 // All guides created by a particular Users
-router.route('/:authorID').get(getUsersGuides)
+router.route('/user-guide/:authorID').get(getUsersGuides)
 
 
 // Single Guide actions

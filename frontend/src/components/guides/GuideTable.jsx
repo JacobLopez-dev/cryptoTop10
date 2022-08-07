@@ -2,10 +2,10 @@ import React from 'react'
 import GuideTableItem from './GuideTableItem'
 import {useSelector, useDispatch} from 'react-redux'
 import {toast} from 'react-toastify'
-import { deleteGuide } from '../../features/guides/guidesSlice'
+import { deleteGuide} from '../../features/guides/guidesSlice'
 
-function GuideTable({guides}) {
-  const {isError, message, isSuccess} = useSelector((state) => state.guides)
+function GuideTable() {
+  const {guides, isError, message, isSuccess} = useSelector((state) => state.guides)
 
   const dispatch = useDispatch()
 

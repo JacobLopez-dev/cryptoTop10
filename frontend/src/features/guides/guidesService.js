@@ -21,7 +21,7 @@ const getGuides = async () => {
 
 // Get all guides by a specific user
 const getUsersGuides = async (authorID) => {
-    const response = await axios.get(API_URL+`/${authorID}`)
+    const response = await axios.get(API_URL+`/user-guide/${authorID}`)
     return response.data
 }
 

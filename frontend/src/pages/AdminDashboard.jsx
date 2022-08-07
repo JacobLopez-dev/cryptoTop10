@@ -1,13 +1,12 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
 import {getGuides, resetGuides} from '../features/guides/guidesSlice'
 import GuideTable from '../components/guides/GuideTable'
 import Spinner from '../components/Spinner'
 
 function AdminDashboard() {
 
-  const {guides, isLoading, isSuccess} = useSelector((state) => state.guides)
+  const {isLoading, isSuccess} = useSelector((state) => state.guides)
   const dispatch = useDispatch()
 
   useEffect(() => {

@@ -27,7 +27,7 @@ function CreateGuide() {
           if(isSuccess) {
               dispatch(resetGuides())
           }
-          console.log('guide page reset')
+          console.log('create guide page reset')
       }
     }, [dispatch, isSuccess])
 

@@ -9,16 +9,13 @@ function UserGuides() {
   const {currentAuthorGuides, isLoading, isSuccess, isError, message} = useSelector((state) => state.guides)
 
   const dispatch = useDispatch()
-  
-
 
   const deleteSelectedGuide = (slug) => {
-    currentAuthorGuides.filter(guide => guide.slug === slug)
-
     dispatch(deleteGuide(slug))
 
     if(isSuccess){
-        toast.info(slug+'deleted') 
+      toast.info(slug+'deleted') 
+      currentAuthorGuides.filter(guide => guide.slug === slug)
     }
 
     if(isError){
@@ -35,23 +32,26 @@ function UserGuides() {
   return (
     <>
       {currentAuthorGuides.map(guide => (
-        <div className="card bg-secondary w-96 shadow-xl rounded-xl" key={guide._id}>
-          <figure>
-            <div className='bg-primary rounded-xl mb-4 w-full'>
-              <img src={guide.coverImage} alt="guide-cover" className='h-56 w-full'/>
-            </div>
-          </figure>
+        <article className="card lg:card-side bg-secondary shadow-xl mt-10 w-10/12 lg:w-8/12" key={guide._id}>
+          <figure><img src={guide.coverImage} alt="guideImage"/></figure>
           <div className="card-body">
             <h2 className="card-title">{guide.title}</h2>
             <p>{guide.description}</p>
             <div className="card-actions justify-end">
+            <Link to={`/guide/${guide.slug}`}>
+              <button className="tooltip tooltip-accent tooltip-bottom mr-2 text-xl" data-tip="View"><FaEye/></button>
+            </Link>
+              <Link to={`/guide/${guide.slug}/edit`}>
+                <button className="tooltip tooltip-accent tooltip-bottom mr-2 text-xl" data-tip="Edit"><FaPencilAlt/></button>
+              </Link>
               <button className="tooltip tooltip-accent tooltip-bottom mr-2 text-xl" data-tip="delete" onClick={()=> deleteSelectedGuide(guide.slug)}><FaTrash/></button>
             </div>
           </div>
-        </div>
+        </article>
       ))}
     </>
   )
 }
 
 export default UserGuides
+
