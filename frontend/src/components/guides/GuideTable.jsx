@@ -24,7 +24,7 @@ function GuideTable() {
 }
 
   return (
-    <div className="overflow-x-auto grid">
+    <div className="overflow-x-auto grid p-5">
     <table className="table">
         <thead>
           <tr>

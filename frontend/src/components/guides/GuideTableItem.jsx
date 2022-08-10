@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom'
 
 
 function GuideTableItem({guide, deleteSelectedGuide}) {
+  
   return (
     <>
             <tr className='hover' key={guide._id}>
                 <td>{guide.title}</td>
-                <td>{guide.author}</td>
-                <td>{guide.description}</td>
+                <td>{guide.authorName}</td>
+                <td>{guide.description.slice(0,50)} ...</td>
                 <td>
-                <span className='flex gap-3'>
+                <span className='flex gap-3 w-fit'>
                     <Link to={`/guide/${guide.slug}/edit`}>
                         <button className="tooltip tooltip-accent tooltip-bottom mr-2 text-xl" data-tip="Edit"><FaPencilAlt/></button>
                     </Link>

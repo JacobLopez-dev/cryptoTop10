@@ -22,14 +22,14 @@ function CreateGuide() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    useEffect(() => {
-      return () => {
-          if(isSuccess) {
-              dispatch(resetGuides())
-          }
-          console.log('create guide page reset')
-      }
-    }, [dispatch, isSuccess])
+    // useEffect(() => {
+    //   return () => {
+    //       if(isSuccess) {
+    //           dispatch(resetGuides())
+    //       }
+    //       console.log('create guide page reset')
+    //   }
+    // }, [dispatch, isSuccess])
 
     useEffect(() => {
       if(isError){

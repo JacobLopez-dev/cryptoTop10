@@ -38,11 +38,11 @@ function Profile() {
     {/* Header */}
       <div className="header h-96 bg-primary grid">
         <Particle height={400}/>
-        <h1 className='text-4xl place-self-center'>Hello, {user.name}</h1>
+        <h1 className='text-4xl text-neutral-content place-self-center'>Hello, {user.name}</h1>
       </div>
       <div className="w-full flex items-center justify-between mt-5 p-5">
         <h2 className='text-3xl'>Your Articles</h2>
-        <Link to={'/new-guide'}>
+        <Link to='/new-guide'>
           <button className='btn bg-secondary rounded-lg'>New Article</button>
         </Link>
       </div>
